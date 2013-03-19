@@ -1,0 +1,27 @@
+/* header.css
+ * ----------
+ * Header layout classes. */
+
+/* Global */
+body.standard div#header {
+    height: 200px;
+}
+body.homepage div#header {
+    height: 400px;
+}
+
+/* Banner */
+div#banner {
+    position: absolute;
+    width: 100%;
+    max-height: 300px;
+}
+
+/* Top navigation */
+div#topnav {
+    position: absolute;
+    bottom: -20px;
+    height: 40px;
+    width: 100%;
+    opacity: 0.5;
+}

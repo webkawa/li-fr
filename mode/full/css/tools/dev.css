@@ -1,0 +1,19 @@
+/* dev.css
+ * -------
+ * Developpement classes and shortcuts. */
+
+.bluebg {
+    background-color: blue !important;
+}
+.greenbg {
+    background-color: green !important;
+}
+.redbg {
+    background-color: red !important;
+}
+.pinkbg {
+    background-color: pink !important;
+}
+.yellowbg {
+    background-color: yellow !important;
+}

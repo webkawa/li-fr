@@ -1,0 +1,27 @@
+/* base.css
+ * --------
+ * Universal layout constraints. */
+
+/* Body */
+body {
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+/* Header */
+div#header {
+    position: relative;
+    min-height: 200px;
+    max-height: 400px;
+}
+
+/* Page body */
+div#body {
+    min-height: 200px;
+}
+
+/* Footer */
+div#footer {
+    height: 100px;
+}
