@@ -12,16 +12,15 @@ body {
 /* Header */
 div#header {
     position: relative;
-    min-height: 200px;
-    max-height: 400px;
 }
 
 /* Page body */
 div#body {
-    min-height: 200px;
+    position: relative;
+    min-height: 300px;
 }
 
 /* Footer */
 div#footer {
-    height: 100px;
+    height: 60px;
 }

@@ -17,3 +17,7 @@
 .yellowbg {
     background-color: yellow !important;
 }
+
+.transparent {
+    opacity: 0.5;
+}

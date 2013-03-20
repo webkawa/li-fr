@@ -4,7 +4,7 @@
 
 /* Global */
 body.standard div#header {
-    height: 200px;
+    height: 120px;
 }
 body.homepage div#header {
     height: 400px;
@@ -20,8 +20,33 @@ div#banner {
 /* Top navigation */
 div#topnav {
     position: absolute;
+    z-index: 10;
     bottom: -20px;
     height: 40px;
     width: 100%;
-    opacity: 0.5;
+}
+div#topnav div.baseline {
+    position: relative;
+    z-index: 11;
+    width: 920px;
+    height: 32px;
+    margin: 4px auto 4px;
+}
+div#topnav div.baseline div.nav {
+    position: absolute;
+    z-index: 13;
+    width: 100%;
+}
+div#topnav div.baseline div.subnav {
+    z-index: 12;
+    position: absolute;
+    top: -4px;
+    left: -40px;
+    right: -40px;
+}
+div#topnav div.baseline div.subnav.in {
+    height: 40px;
+}
+div#topnav div.baseline div.subnav.out {
+    height: 300px;
 }

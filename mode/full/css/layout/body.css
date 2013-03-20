@@ -1,0 +1,20 @@
+/* body.css
+ * --------
+ * Body layout classes. */
+
+/* Social links */
+div#body div.social {
+    position: absolute;
+    bottom: 0px;
+    right: 20px;
+}
+div#body div.social.small {
+    z-index: 2;
+    width: 160px;
+    height: 40px;
+}
+div#body div.social.big {
+    z-index: 14;
+    width: 240px;
+    height: 300px;
+}

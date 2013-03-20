@@ -5,18 +5,28 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link type="text/css" rel="stylesheet" href="css/layout/base.css">
         <link type="text/css" rel="stylesheet" href="css/layout/header.css">
+        <link type="text/css" rel="stylesheet" href="css/layout/body.css">
         <link type="text/css" rel="stylesheet" href="css/tools/dev.css">
         <script type="text/javascript" src="js/libs/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/init/configuration.js"></script>
+        <script type="text/javascript" src="js/init/constants.js"></script>
         <script type="text/javascript" src="js/display/layout.js"></script>
         <script type="text/javascript" src="js/display/refresh.js"></script>
         <script type="text/javascript" src="js/tools/dev.js"></script>
     </head>
     <body class="standard">
-        <div id="header" class="bluebg">
-            <div id="banner" class="pinkbg">Banner !</div>
-            <div id="topnav" class="yellowbg">Nav !</div>
+        <div id="header" class="pinkbg">
+            <div id="banner" class="redbg">Banner !</div>
+            <div id="topnav">
+                <div class="baseline">
+                    <div class="nav bluebg">Nav !</div>
+                    <div class="subnav out greenbg">Sub nav !</div>
+                </div>
+            </div>
         </div>
-        <div id="body" class="greenbg">Some other stuff</div>
+        <div id="body">
+            <div class="social big yellowbg">Social !</div>
+        </div>        
         <div id="footer" class="redbg">Some ending stuff</div>
     </body>
 </html>
