@@ -4,17 +4,16 @@
 
 /* Social links */
 div#body div.social {
+    z-index: 2;
     position: absolute;
     bottom: 0px;
     right: 20px;
 }
-div#body div.social.small {
-    z-index: 2;
+div#body div.social.close {
     width: 160px;
     height: 40px;
 }
-div#body div.social.big {
-    z-index: 14;
-    width: 240px;
-    height: 300px;
+div#body div.social.open {
+    width: 160px;
+    height: 200px;
 }

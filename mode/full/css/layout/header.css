@@ -36,6 +36,7 @@ div#topnav div.baseline div.nav {
     position: absolute;
     z-index: 13;
     width: 100%;
+    height: 32px;
 }
 div#topnav div.baseline div.subnav {
     z-index: 12;
@@ -43,10 +44,11 @@ div#topnav div.baseline div.subnav {
     top: -4px;
     left: -40px;
     right: -40px;
+    padding-top: 40px;
 }
-div#topnav div.baseline div.subnav.in {
-    height: 40px;
+div#topnav.close div.baseline div.subnav {
+    height: 0px;
 }
-div#topnav div.baseline div.subnav.out {
+div#topnav.open div.baseline div.subnav {
     height: 300px;
 }

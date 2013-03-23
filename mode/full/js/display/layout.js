@@ -14,6 +14,12 @@ function refreshBanner() {
     );
 }
 
+/* Header auto-resize */
+function refreshHeader() {
+    /* Dependances */
+    refreshBanner();
+}
+
 /* Body auto-resize */
 function refreshBody () {
     /* Resize */
@@ -24,5 +30,5 @@ function refreshBody () {
     );
     
     /* Dependances */
-    refreshBanner();
+    refreshHeader();
 }
