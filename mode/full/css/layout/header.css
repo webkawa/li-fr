@@ -15,6 +15,10 @@ div#banner {
     position: absolute;
     width: 100%;
     max-height: 300px;
+    overflow: hidden;
+}
+div#banner div {
+    position: absolute;
 }
 
 /* Top navigation */
@@ -32,12 +36,26 @@ div#topnav div.baseline {
     height: 32px;
     margin: 4px auto 4px;
 }
+/* Top navigation base */
 div#topnav div.baseline div.nav {
     position: absolute;
     z-index: 13;
     width: 100%;
     height: 32px;
 }
+div#topnav div.baseline div.nav ul.links {
+    text-align: center;
+    margin: 4px;
+}
+div#topnav div.baseline div.nav ul.links li {
+    display: inline;
+    margin: 0px 8px;
+    padding: 4px;
+    color: white;
+    border: 1px solid white;
+    border-radius: 5px;
+}
+/* Top navigation extension */
 div#topnav div.baseline div.subnav {
     z-index: 12;
     position: absolute;
@@ -45,6 +63,8 @@ div#topnav div.baseline div.subnav {
     left: -40px;
     right: -40px;
     padding-top: 40px;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 div#topnav.close div.baseline div.subnav {
     height: 0px;

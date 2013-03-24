@@ -1,0 +1,8 @@
+/* dev.css
+ * -------
+ * Temporary skin-related information file. */
+
+/* S0 : HP */
+div#banner div.S0 {
+    background: black url('../../../../data/media/001_stockshot.png') no-repeat center center;
+}

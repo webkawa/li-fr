@@ -6,27 +6,39 @@
         <link type="text/css" rel="stylesheet" href="css/layout/base.css">
         <link type="text/css" rel="stylesheet" href="css/layout/header.css">
         <link type="text/css" rel="stylesheet" href="css/layout/body.css">
+        <link type="text/css" rel="stylesheet" href="css/skins/dev.css">
         <link type="text/css" rel="stylesheet" href="css/tools/dev.css">
         <script type="text/javascript" src="js/libs/jquery-1.9.1.min.js"></script>
-        <script type="text/javascript" src="js/init/configuration.js"></script>
-        <script type="text/javascript" src="js/init/constants.js"></script>
-        <script type="text/javascript" src="js/display/layout.js"></script>
-        <script type="text/javascript" src="js/display/refresh.js"></script>
         <script type="text/javascript" src="js/tools/dev.js"></script>
+        <script type="text/javascript" src="js/tools/tk.js"></script>
+        <script type="text/javascript" src="js/init/ressources.js"></script>
+        <script type="text/javascript" src="js/init/constants.js"></script>
+        <script type="text/javascript" src="js/init/nav.js"></script>
+        <script type="text/javascript" src="js/init/dom.js"></script>
+        <script type="text/javascript" src="js/display/header.js"></script>
+        <script type="text/javascript" src="js/display/layout.js"></script>
+        <script type="text/javascript" src="js/events/refresh.js"></script>
+        <script type="text/javascript" src="js/events/topnav.js"></script>
     </head>
     <body class="standard">
         <div id="header" class="pinkbg">
-            <div id="banner" class="redbg">Banner !</div>
+            <div id="banner" class="redbg"></div>
             <div id="topnav" class="open">
                 <div class="baseline">
-                    <div class="nav bluebg">Nav !</div>
-                    <div class="subnav greenbg">Sub nav !</div>
+                    <div class="nav">
+                        <ul class="links"></ul>
+                    </div>
+                    <div class="subnav greenbg transparent">Sub nav !</div>
                 </div>
             </div>
         </div>
-        <div id="body">
+        <div id="body">aaa
             <div class="social open yellowbg">Social !</div>
         </div>        
         <div id="footer" class="redbg">Some ending stuff</div>
+        <script type="text/javascript">
+            initLoadBanner();
+            initLoadTopNav();
+        </script>
     </body>
 </html>
