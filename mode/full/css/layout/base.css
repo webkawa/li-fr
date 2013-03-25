@@ -12,6 +12,7 @@ body {
 /* Header */
 div#header {
     position: relative;
+    background-color: #696969;
 }
 
 /* Page body */

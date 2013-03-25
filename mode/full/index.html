@@ -9,36 +9,46 @@
         <link type="text/css" rel="stylesheet" href="css/skins/dev.css">
         <link type="text/css" rel="stylesheet" href="css/tools/dev.css">
         <script type="text/javascript" src="js/libs/jquery-1.9.1.min.js"></script>
+        <script type="text/javascript" src="js/libs/jquery.easing.1.3.js"></script>
         <script type="text/javascript" src="js/tools/dev.js"></script>
         <script type="text/javascript" src="js/tools/tk.js"></script>
+        <script type="text/javascript" src="js/tools/build.js"></script>
         <script type="text/javascript" src="js/init/ressources.js"></script>
         <script type="text/javascript" src="js/init/constants.js"></script>
         <script type="text/javascript" src="js/init/nav.js"></script>
         <script type="text/javascript" src="js/init/dom.js"></script>
         <script type="text/javascript" src="js/display/header.js"></script>
         <script type="text/javascript" src="js/display/layout.js"></script>
-        <script type="text/javascript" src="js/events/refresh.js"></script>
+        <script type="text/javascript" src="js/events/master.js"></script>
         <script type="text/javascript" src="js/events/topnav.js"></script>
     </head>
     <body class="standard">
-        <div id="header" class="pinkbg">
-            <div id="banner" class="redbg"></div>
-            <div id="topnav" class="open">
+        <div id="header">
+            <div id="banner"></div>
+            <div id="topnav" class="close">
                 <div class="baseline">
                     <div class="nav">
                         <ul class="links"></ul>
                     </div>
-                    <div class="subnav greenbg transparent">Sub nav !</div>
+                    <div class="subnav greenbg">
+                        <div class="content">
+                            <div class="column left redbg">aaa</div>
+                            <div class="column center bluebg">bbb</div>
+                            <div class="column right yellowbg">ccc</div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="body">aaa
+        <div id="body" class="pinkbg"> 
+            <div>aaa</div>
             <div class="social open yellowbg">Social !</div>
         </div>        
         <div id="footer" class="redbg">Some ending stuff</div>
         <script type="text/javascript">
             initLoadBanner();
             initLoadTopNav();
+            bindAllEvents();
         </script>
     </body>
 </html>

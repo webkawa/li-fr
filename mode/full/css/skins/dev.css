@@ -4,5 +4,6 @@
 
 /* S0 : HP */
 div#banner div.S0 {
-    background: black url('../../../../data/media/001_stockshot.png') no-repeat center center;
+    background: black url('../../../../data/media/000_stockshot.png') no-repeat center center;
+    border-color: #eaeaea;
 }

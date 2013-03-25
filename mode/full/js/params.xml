@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- params.xml : parameters file -->
-<root>
-    
-</root>
+<params>
+    <component id="topnav">
+        <var name="switchspeed">750</var>
+    </component>
+</params>

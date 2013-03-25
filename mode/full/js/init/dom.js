@@ -4,6 +4,10 @@
 
 /* Top navigation loader */
 function initLoadTopNav() {
+    /* Cosmetic */
+    $("div#topnav div.baseline div.subnav").css("opacity", 0);
+    
+    /* Links */
     var buff;
     $(smap).find("l1").each(function () {
         buff =  '<li>' +

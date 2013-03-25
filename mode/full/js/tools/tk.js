@@ -24,3 +24,17 @@ function adjustFS(target, container) {
     return fs;
 }
 
+/* Real height plugin */
+(function($) {
+    $.fn.realHeight = function(h) {
+        $(this).height(h - ($(this).outerHeight(true) - $(this).innerHeight()));
+    };
+    $.fn.realWidth = function(w) {
+        $(this).width(w - ($(this).outerWidth(true) - $(this).innerWidth()));
+    };
+})(jQuery);
+
+/* Configuration access */
+function cfget(component, variable) {
+    return $(cfg).find('params > component#' + component + ' > var[name="' + variable + '"]').text();
+}
