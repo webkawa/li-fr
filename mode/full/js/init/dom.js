@@ -9,9 +9,11 @@ function initLoadTopNav() {
     
     /* Links */
     var buff;
-    $(smap).find("l1").each(function () {
+    $(nav.tn).find("nav topnav rubric").each(function () {
         buff =  '<li>' +
-                $(this).find("title").text() +
+                '<a href="' + $(this).attr("target") + '">' +
+                $(this).attr("text") +
+                '</a>' +
                 '</li>';
         $("div#topnav div.baseline div.nav ul.links").append(buff);
     });

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- nav.xml : Navigation file -->
+<nav>
+    <topnav>
+        <rubric id="l1r1" target="l1r1" text="1st rubric">
+            <column position="left">
+                a
+            </column>
+            <column position="center">
+                b
+            </column>
+            <column position="right">
+                c
+            </column>
+        </rubric>
+        <rubric id="l1r2" target="l1r2" text="2nd rubric">
+            <column position="left">
+                d
+            </column>
+            <column position="center">
+                e
+            </column>
+            <column position="right">
+                f
+            </column>
+        </rubric>
+    </topnav>
+</nav>

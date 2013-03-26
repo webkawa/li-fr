@@ -2,6 +2,9 @@
 <!-- params.xml : parameters file -->
 <params>
     <component id="topnav">
-        <var name="switchspeed">750</var>
+        <var name="subnav_open_speed">750</var>
+        <var name="subnav_close_speed">750</var>
+        <var name="subnav_switchout_speed">120</var>
+        <var name="subnav_switchin_speed">120</var>
     </component>
 </params>

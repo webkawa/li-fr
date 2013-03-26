@@ -2,6 +2,26 @@
  *  ---------
  *  Top navigation related events. */
 
+/* Sub navigation switching */
+function eventSwitchSubNav(target) {
+    /* Switching mode */
+    switchStartSubNavigation(target);
+    bindTopNavEvents();
+    
+    /* Launching */
+    var subnavct = $("div#topnav div.baseline div.subnav div.content");
+    $(subnavct).animate({
+        opacity: 0
+    }, cfgetint("topnav", "subnav_switchout_speed"), "linear", function() {
+        buildSubNavigation($(target).children("a:first").attr("href"));
+    }).animate({
+        opacity: 1
+    }, cfgetint("topnav", "subnav_switchin_speed"), "linear", function() {
+        switchEndSubNavigation();
+        bindTopNavEvents();
+    });
+}
+
 /* Sub navigation opening */
 function eventOpenSubNav() {
     /* Switching mode */
@@ -14,7 +34,7 @@ function eventOpenSubNav() {
     $(subnav).animate({
         opacity: 1,
         height: constants.subNavOpenBH
-    }, cfget("topnav", "switchspeed"), "easeOutExpo", function() {
+    }, cfgetint("topnav", "subnav_open_speed"), "easeOutExpo", function() {
         switchTopNavigation("open");
         bindTopNavEvents();
     });
@@ -32,8 +52,9 @@ function eventCloseSubNav() {
     $(subnav).animate({
         opacity: 0,
         height: constants.subNavCloseBH
-    }, cfget("topnav", "switchspeed"), "easeOutExpo", function() {
+    }, cfgetint("topnav", "subnav_close_speed"), "easeOutExpo", function() {
         switchTopNavigation("close");
+        emptySubNavigationContent();
         bindTopNavEvents();
     });
 }
@@ -48,10 +69,16 @@ function bindTopNavEvents() {
     /* Sub navigation opening */
     buff = "div#topnav.close div.baseline div.nav ul.links li," +
             "div#topnav.closing div.baseline div.nav ul.links li";
-    $(buff).hover(eventOpenSubNav, jQuery.noop());
+    $(buff).mouseenter(eventOpenSubNav);
 
     /* Sub navigation closing */
     buff = "div#topnav.open div.baseline div.subnav," +
             "div#topnav.opening div.baseline div.subnav";
-    $(buff).hover(jQuery.noop(), eventCloseSubNav);
+    $(buff).mouseleave(eventCloseSubNav);
+    
+    /* Sub navigation switching */
+    buff = "div#topnav:not(.switching) div.baseline div.nav ul.links li:not(.selected)";
+    $(buff).mouseenter(function() {
+        eventSwitchSubNav(this);
+    });
 }

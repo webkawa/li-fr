@@ -2,12 +2,21 @@
  *  ------
  *  Navigation info and tools. */
 
-/* User position */
+/* Initial top navigation loading */
+var tnreq = jQuery.ajax({
+    type: "GET",
+    dataType: "xml",
+    url: "../../data/content/nav.xml",
+    async: false
+});
+
+/* Navigation infos */
 var nav = {
     idp     :   "hp",
     l1      :   false,
     l2      :   false,
-    l3      :   false
+    l3      :   false,
+    tn      :   jQuery.parseXML(tnreq.responseText)
 };
 
 /* User position switcher */

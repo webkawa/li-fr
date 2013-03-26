@@ -54,21 +54,38 @@ div#topnav div.baseline div.nav ul.links li {
     display: inline;
     margin: 0px 8px;
     padding: 4px;
-    color: white;
-    border: 1px solid white;
+    border: 1px solid black;
     border-radius: 5px;
-    background: blue;
+    background: white;
+}
+div#topnav div.baseline div.nav ul.links li.selected {
+    border-color: #c20000;
+}
+div#topnav div.baseline div.nav ul.links li:hover {
+    border-color: red;
+}
+div#topnav div.baseline div.nav ul.links li a {
+    color: black;
+}
+div#topnav div.baseline div.nav ul.links li.selected a {
+    color: #c20000;
+}
+div#topnav div.baseline div.nav ul.links li:hover a {
+    color: red;
 }
 /* Top navigation extension */
 div#topnav div.baseline div.subnav {
     z-index: 12;
     position: absolute;
     overflow: hidden;
-    top: -4px;
+    top: -8px;
     left: -40px;
     right: -40px;
-    padding-top: 38px;
-    border: 1px solid black;
+    opacity: 1;
+    background: white;
+    padding-top: 52px;
+    padding: 52px 5px 10px 5px;
+    border: 1px solid #c20000;
     border-radius: 5px;
 }
 div#topnav.close div.baseline div.subnav {
@@ -85,15 +102,18 @@ div#topnav div.baseline div.subnav div.content {
 }
 div#topnav div.baseline div.subnav div.content div.column {
     display: inline-block;
+    vertical-align: top;
     width: 32%;
     font-size: 15px;
 }
 div#topnav div.baseline div.subnav div.content div.column.left {
+    background: url('../../../../data/media/pixels/d7d7d7.png') repeat-y right top;
     margin-left: 2%;
 }
 div#topnav div.baseline div.subnav div.content div.column.center {
     
 }
 div#topnav div.baseline div.subnav div.content div.column.right {
+    background: url('../../../../data/media/pixels/d7d7d7.png') repeat-y left top;
     margin-right: 2%;
 }

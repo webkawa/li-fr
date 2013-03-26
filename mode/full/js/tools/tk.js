@@ -38,3 +38,6 @@ function adjustFS(target, container) {
 function cfget(component, variable) {
     return $(cfg).find('params > component#' + component + ' > var[name="' + variable + '"]').text();
 }
+function cfgetint(component, variable) {
+    return parseInt(cfget(component, variable));
+}

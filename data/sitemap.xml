@@ -1,15 +1,12 @@
 <!-- sitemap.xml : global sitemap -->
 <sitemap>
     <l1 id="l1r1">
-        <title>L1 Foo</title>
         <skin>S1</skin>
     </l1>
     <l1 id="l1r2">
-        <title>L2 Foo</title>
         <skin>S2</skin>
     </l1>
     <l1 id="l1r3">
-        <title>L3 Foo</title>
         <skin>S3</skin>
     </l1>
     <page id="hp">
