@@ -17,3 +17,8 @@ function refreshBanner() {
             (headerIH - $("div#banner").outerHeight(true)) / 2 + "px"
     );
 }
+
+/* Sub navigation columns auto-resize */
+function refreshSubNavContentColumns() {
+    $("div#topnav div.baseline div.subnav div.content div.column").realHeight(constants.subNavOpenH);
+}

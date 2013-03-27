@@ -83,8 +83,7 @@ div#topnav div.baseline div.subnav {
     right: -40px;
     opacity: 1;
     background: white;
-    padding-top: 52px;
-    padding: 52px 5px 10px 5px;
+    padding: 52px 5px 20px 5px;
     border: 1px solid #c20000;
     border-radius: 5px;
 }
@@ -97,6 +96,7 @@ div#topnav.open div.baseline div.subnav {
     height: 300px;
 }
 div#topnav div.baseline div.subnav div.content {
+    height: 0;
     width: 100%;
     font-size: 0px;
 }

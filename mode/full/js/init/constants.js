@@ -7,7 +7,7 @@ var constants;
 $(document).ready(function() {
     /* Open sub-navigation */
     switchTopNavigation("open");
-    var subNavOpenBH = parseInt($("div#topnav div.subnav").css("height"));
+    var subNavOpenH = $("div#topnav div.subnav").height();
     var subNavOpenOpacity = $("div#topnav div.subnav").css("opacity");
     switchTopNavigation("close");
     
@@ -15,9 +15,9 @@ $(document).ready(function() {
     constants = {
         bodyMinHeight       :   parseInt($("div#body").css("min-height")),
         topNavFS            :   parseInt($("div#topnav div.baseline div.nav ul.links").css("font-size")),
-        subNavCloseBH       :   parseInt($("div#topnav div.subnav").css("height")),
+        subNavCloseH        :   $("div#topnav div.subnav").height(),
         subNavCloseOpacity  :   $("div#topnav div.subnav").css("opacity"),
-        subNavOpenBH        :   subNavOpenBH,
+        subNavOpenH         :   subNavOpenH,
         subNavOpenOpacity   :   subNavOpenOpacity
     };
 });

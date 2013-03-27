@@ -6,6 +6,7 @@
 function refreshHeader() {
     /* Dependances */
     refreshBanner();
+    refreshSubNavContentColumns();
 }
 
 /* Body auto-resize */

@@ -12,6 +12,8 @@ function switchTopNavigation(mode) {
     /* Specific action */
     if (mode === "closing") {
         $("div#topnav div.baseline div.nav ul.links li").removeClass("selected");
+    } else if (mode === "close" || mode === "open") {
+        $("div#topnav").removeAttr("style");
     }
 }
 
@@ -34,7 +36,23 @@ function emptySubNavigationContent() {
 
 /* Sub navigation build */
 function buildSubNavigationColumn(target, data) {
-    $(target).append($(data).text());
+    $(data).children().each(function() {
+        var buff;
+        if ($(this).is("h1")) {
+            buff =  '<p class="h1"><a href="' +
+                    $(this).attr("target") +
+                    '">' +
+                    $(this).text() +
+                    '</a></p>';
+        } else if ($(this).is("h2")) {
+            buff =  '<p class="h2"><a class="h2" href="' +
+                    $(this).attr("target") +
+                    '">' +
+                    $(this).text() +
+                    '</a></p>';
+        }
+        $(target).append(buff);
+    });
 }
 function buildSubNavigation(id) {
     var subnavct = $("div#topnav div.baseline div.subnav div.content");

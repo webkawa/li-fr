@@ -8,11 +8,14 @@ function eventSwitchSubNav(target) {
     switchStartSubNavigation(target);
     bindTopNavEvents();
     
+    /* Opening indicator */
+    var opening = ($("div#topnav").hasClass("opening"));
+    
     /* Launching */
     var subnavct = $("div#topnav div.baseline div.subnav div.content");
     $(subnavct).animate({
         opacity: 0
-    }, cfgetint("topnav", "subnav_switchout_speed"), "linear", function() {
+    }, opening ? 0 : cfgetint("topnav", "subnav_switchout_speed"), "linear", function() {
         buildSubNavigation($(target).children("a:first").attr("href"));
     }).animate({
         opacity: 1
@@ -33,7 +36,7 @@ function eventOpenSubNav() {
     $(subnav).stop();
     $(subnav).animate({
         opacity: 1,
-        height: constants.subNavOpenBH
+        height: constants.subNavOpenH
     }, cfgetint("topnav", "subnav_open_speed"), "easeOutExpo", function() {
         switchTopNavigation("open");
         bindTopNavEvents();
@@ -51,7 +54,7 @@ function eventCloseSubNav() {
     $(subnav).stop();
     $(subnav).animate({
         opacity: 0,
-        height: constants.subNavCloseBH
+        height: constants.subNavCloseH
     }, cfgetint("topnav", "subnav_close_speed"), "easeOutExpo", function() {
         switchTopNavigation("close");
         emptySubNavigationContent();
@@ -62,18 +65,18 @@ function eventCloseSubNav() {
 /* Configures top navigation events */
 function bindTopNavEvents() {
     var buff;
-
+    
     /* Initial unbind */
     $("div#topnav").find("*").unbind();
-
+    
     /* Sub navigation opening */
     buff = "div#topnav.close div.baseline div.nav ul.links li," +
             "div#topnav.closing div.baseline div.nav ul.links li";
     $(buff).mouseenter(eventOpenSubNav);
 
     /* Sub navigation closing */
-    buff = "div#topnav.open div.baseline div.subnav," +
-            "div#topnav.opening div.baseline div.subnav";
+    buff = "div#topnav.open div.baseline," +
+            "div#topnav.opening div.baseline";
     $(buff).mouseleave(eventCloseSubNav);
     
     /* Sub navigation switching */
