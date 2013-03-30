@@ -1,15 +1,26 @@
 <!-- sitemap.xml : global sitemap -->
 <sitemap>
-    <l1 id="l1r1">
-        <skin>S1</skin>
+    <l1 id="l1r1" skin="S1">
+        <index id="l1r1index">
+            <mode>panoramic</mode>
+        </index>
     </l1>
-    <l1 id="l1r2">
-        <skin>S2</skin>
+    <l1 id="l1r2" skin="S2">
+        <index id="l1r2index">
+            <mode>panoramic</mode>
+        </index>
     </l1>
-    <l1 id="l1r3">
-        <skin>S3</skin>
+    <l1 id="l1r3" skin="S3">
+        <index id="l1r3index">
+            <mode>panoramic</mode>
+        </index>
     </l1>
-    <page id="hp">
+    <index id="hp">
         <skin>S0</skin>
+        <mode>panoramic</mode>
+    </index>
+    <page id="404">
+        <skin>S0</skin>
+        <mode>normal</mode>
     </page>
 </sitemap>

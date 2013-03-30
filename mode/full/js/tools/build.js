@@ -2,6 +2,12 @@
  *  --------
  *  Pure DOM manipulation functions. */
 
+/* Page disposition mode switching */
+function switchPageDisposition(mode) {
+    $("body").removeClass("panoramic normal");
+    $("body").addClass(mode);
+}
+
 /* Top navigation mode switching */
 function switchTopNavigation(mode) {
     /* General action */

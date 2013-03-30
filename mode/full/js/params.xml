@@ -1,10 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- params.xml : parameters file -->
 <params>
+    <component id="page">
+        <var name="page_topanoramic_speed">1000</var>
+        <var name="page_topanoramic_easing">easeOutExpo</var>
+        <var name="page_tonormal_speed">1000</var>
+        <var name="page_tonormal_easing">easeOutExpo</var>
+    </component>
     <component id="topnav">
         <var name="subnav_open_speed">750</var>
+        <var name="subnav_open_easing">easeOutExpo</var>
         <var name="subnav_close_speed">750</var>
+        <var name="subnav_close_easing">easeOutExpo</var>
         <var name="subnav_switchout_speed">120</var>
+        <var name="subnav_switchout_easing">linear</var>
         <var name="subnav_switchin_speed">120</var>
+        <var name="subnav_switchin_easing">linear</var>
     </component>
 </params>

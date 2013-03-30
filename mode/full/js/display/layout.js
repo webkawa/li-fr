@@ -10,14 +10,7 @@ function refreshHeader() {
 }
 
 /* Body auto-resize */
-function refreshBody () {
-    /* Resize */
-    $("div#body").height(
-            $(window).innerHeight() - 
-            $("div#header").outerHeight(true) - 
-            $("div#footer").outerHeight(true)   
-    );
-    
+function refreshAll() {
     /* Dependances */
     refreshHeader();
 }

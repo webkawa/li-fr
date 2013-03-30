@@ -5,19 +5,19 @@
 /* Header size setter */
 function setHeaderHeight(i) {
     $("div#header").height(i);
-    refreshBody();
+    refreshAll();
 }
 
 /* Page mode switcher */
-function switchPageDisposition() {
-    if ($("body").hasClass("standard")) {
-        $("body").removeClass("standard");
-        $("body").addClass("homepage");
+function switchPageDispo() {
+    if ($("body").hasClass("normal")) {
+        $("body").removeClass("normal");
+        $("body").addClass("panoramic");
     } else {
-        $("body").removeClass("homepage");
-        $("body").addClass("standard");
+        $("body").removeClass("panoramic");
+        $("body").addClass("normal");
     }
-    refreshBody();
+    refreshAll();
 }
 
 /* Nav mode switcher */

@@ -2,18 +2,3 @@
  * --------
  * Body layout classes. */
 
-/* Social links */
-div#body div.social {
-    z-index: 2;
-    position: absolute;
-    bottom: 0px;
-    right: 20px;
-}
-div#body div.social.close {
-    width: 160px;
-    height: 40px;
-}
-div#body div.social.open {
-    width: 160px;
-    height: 200px;
-}

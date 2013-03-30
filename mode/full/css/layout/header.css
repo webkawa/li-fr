@@ -3,10 +3,10 @@
  * Header layout classes. */
 
 /* Global */
-body.standard div#header {
+body.normal div#header {
     height: 120px;
 }
-body.homepage div#header {
+body.panoramic div#header {
     height: 400px;
 }
 
@@ -84,8 +84,11 @@ div#topnav div.baseline div.subnav {
     opacity: 1;
     background: white;
     padding: 52px 5px 20px 5px;
-    border: 1px solid #c20000;
-    border-radius: 5px;
+    border: 2px solid #c20000;
+    border-radius: 8px;
+}
+div#topnav div.baseline div.subnav:hover {
+    border-color: red;
 }
 div#topnav.close div.baseline div.subnav {
     opacity: 0;

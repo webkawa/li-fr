@@ -15,13 +15,21 @@ function eventSwitchSubNav(target) {
     var subnavct = $("div#topnav div.baseline div.subnav div.content");
     $(subnavct).animate({
         opacity: 0
-    }, opening ? 0 : cfgetint("topnav", "subnav_switchout_speed"), "linear", function() {
-        buildSubNavigation($(target).children("a:first").attr("href"));
+    }, {
+        duration: opening ? 0 : cfgetint("topnav", "subnav_switchout_speed"),
+        easing: cfget("topnav", "subnav_switchout_easing"), 
+        complete:  function() {
+            buildSubNavigation($(target).children("a:first").attr("href"));
+        }
     }).animate({
         opacity: 1
-    }, cfgetint("topnav", "subnav_switchin_speed"), "linear", function() {
-        switchEndSubNavigation();
-        bindTopNavEvents();
+    }, {
+        duration: cfgetint("topnav", "subnav_switchin_speed"),
+        easing: cfget("topnav", "subnav_switchin_easing"),
+        complete: function() {
+            switchEndSubNavigation();
+            bindTopNavEvents();
+        }
     });
 }
 
@@ -37,9 +45,13 @@ function eventOpenSubNav() {
     $(subnav).animate({
         opacity: 1,
         height: constants.subNavOpenH
-    }, cfgetint("topnav", "subnav_open_speed"), "easeOutExpo", function() {
-        switchTopNavigation("open");
-        bindTopNavEvents();
+    }, {
+        duration: cfgetint("topnav", "subnav_open_speed"),
+        easing: cfget("topnav", "subnav_open_easing"), 
+        complete: function() {
+            switchTopNavigation("open");
+            bindTopNavEvents();
+        }
     });
 }
 
@@ -55,10 +67,14 @@ function eventCloseSubNav() {
     $(subnav).animate({
         opacity: 0,
         height: constants.subNavCloseH
-    }, cfgetint("topnav", "subnav_close_speed"), "easeOutExpo", function() {
-        switchTopNavigation("close");
-        emptySubNavigationContent();
-        bindTopNavEvents();
+    }, {
+        duration: cfgetint("topnav", "subnav_close_speed"), 
+        easing: cfget("topnav", "subnav_close_easing"), 
+        complete: function() {
+            switchTopNavigation("close");
+            emptySubNavigationContent();
+            bindTopNavEvents();
+        }
     });
 }
 
@@ -84,4 +100,7 @@ function bindTopNavEvents() {
     $(buff).mouseenter(function() {
         eventSwitchSubNav(this);
     });
+    
+    /* Dependances */
+    bindLinksEvents();
 }

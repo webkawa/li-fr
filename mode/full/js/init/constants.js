@@ -5,6 +5,11 @@
 /* Constants definition */
 var constants;
 $(document).ready(function() {
+    /* Open header */
+    switchPageDisposition("panoramic");
+    var headerPanoramicH = $("div#header").height();
+    switchPageDisposition("normal");
+    
     /* Open sub-navigation */
     switchTopNavigation("open");
     var subNavOpenH = $("div#topnav div.subnav").height();
@@ -13,7 +18,8 @@ $(document).ready(function() {
     
     /* Attribution */
     constants = {
-        bodyMinHeight       :   parseInt($("div#body").css("min-height")),
+        headerNormalH       :   $("div#header").height(),
+        headerPanoramicH    :   headerPanoramicH,
         topNavFS            :   parseInt($("div#topnav div.baseline div.nav ul.links").css("font-size")),
         subNavCloseH        :   $("div#topnav div.subnav").height(),
         subNavCloseOpacity  :   $("div#topnav div.subnav").css("opacity"),

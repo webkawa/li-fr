@@ -14,14 +14,19 @@ div#header {
     position: relative;
     background-color: #696969;
 }
+div#header.switching {
+    overflow: visible !important;
+}
 
 /* Page body */
 div#body {
     position: relative;
-    min-height: 300px;
 }
 
 /* Footer */
 div#footer {
+    position: absolute;
+    bottom: 0px;
     height: 60px;
+    width: 100%;
 }
