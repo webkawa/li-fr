@@ -12,23 +12,24 @@ var tnreq = jQuery.ajax({
 
 /* Navigation infos */
 var nav = {
-    idp     :   $(smap).find("sitemap > index:first").attr("id"),
-    l1      :   false,
-    l2      :   false,
-    l3      :   false,
-    tn      :   jQuery.parseXML(tnreq.responseText)
+    idp: $(smap).find("sitemap > index:first").attr("id"),
+    l1: false,
+    l2: false,
+    l3: false,
+    tn: jQuery.parseXML(tnreq.responseText),
+    ct: null
 };
 
 /* User position switcher */
 function goto(id) {
     /* Page selection */
     var page = $(smap).find("#" + id);
-    
+
     /* Folder case */
     if ($(page).is("l1, l2, l3") && $(page).children("index").length > 0) {
         page = $(smap).find("#" + id + " > index:first");
     }
-    
+
     /* Page case */
     if ($(page).is("index, page")) {
         if ($(page).parent().is("sitemap")) {
@@ -58,11 +59,10 @@ function goto(id) {
         nav.l2 = false;
         nav.l3 = false;
     }
-    
 }
 
 /* Potential navigation class getter */
-function navclassfor(id) {
+function navClassFor(id) {
     var target = $(smap).find("#" + id);
     if ($(target).is("index, page")) {
         if ($(target).parent().is("sitemap")) {
@@ -77,13 +77,13 @@ function navclassfor(id) {
 }
 
 /* Current navigation class getter */
-function navclass() {
-    return navclassfor(nav.idp);
+function navClass() {
+    return navClassFor(nav.idp);
 }
 
 
 /* Page getter */
-function pagefor(id) {
+function pageFor(id) {
     var block = $(smap).find("#" + id);
     if ($(block).is("index, page")) {
         return $(block);
@@ -94,5 +94,30 @@ function pagefor(id) {
 
 /* Current page getter */
 function page() {
-    return pagefor(nav.idp);
+    return pageFor(nav.idp);
+}
+
+/* Page content loader */
+function loadBody(failsafe) {
+    /* Loading */
+    var res = false;
+    jQuery.ajax({
+        type: "GET",
+        dataType: "xml",
+        url: "../../data/content/pages/" + nav.idp + ".xml",
+        async: false,
+        cache: false,
+        success: function() {
+            res = true;
+        }
+    }).done(function(data) {
+        nav.ct = data;
+    });
+
+
+    /* 500 redirect */
+    if (!failsafe && !res) {
+        goto("500");
+        loadBody(true);
+    }
 }

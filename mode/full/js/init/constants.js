@@ -6,9 +6,12 @@
 var constants;
 $(document).ready(function() {
     /* Open header */
+    var bak = $("body").attr("class");
     switchPageDisposition("panoramic");
     var headerPanoramicH = $("div#header").height();
     switchPageDisposition("normal");
+    var headerNormalH = $("div#header").height();
+    switchPageDisposition(bak);
     
     /* Open sub-navigation */
     switchTopNavigation("open");
@@ -18,7 +21,7 @@ $(document).ready(function() {
     
     /* Attribution */
     constants = {
-        headerNormalH       :   $("div#header").height(),
+        headerNormalH       :   headerNormalH,
         headerPanoramicH    :   headerPanoramicH,
         topNavFS            :   parseInt($("div#topnav div.baseline div.nav ul.links").css("font-size")),
         subNavCloseH        :   $("div#topnav div.subnav").height(),

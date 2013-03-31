@@ -2,7 +2,7 @@
 <!-- nav.xml : Navigation file -->
 <nav>
     <topnav>
-        <rubric id="l1r1" target="l1r1" text="1st rubric">
+        <rubric id="l1r1" target="hp" text="1st rubric">
             <column position="left">
                 <h1 target="l1r1_a">Subrubric A</h1>
                 <h2 target="l1r1_a1">Subsubrubric A1</h2>

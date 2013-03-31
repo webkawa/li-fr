@@ -72,3 +72,10 @@ function buildSubNavigation(id) {
     buildSubNavigationColumn($(subnavct).children("div.column.center"), $(data).find('column[position="center"]'));
     buildSubNavigationColumn($(subnavct).children("div.column.right"), $(data).find('column[position="right"]'));
 }
+
+/* Page content build */
+function buildBody() {
+    $("div#body").empty();
+    $(nav.ct).find("*:first").attr("style", "opacity: 0");
+    $("div#body").append($(nav.ct).find("*:first").xmlAsString());
+}

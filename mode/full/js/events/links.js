@@ -2,11 +2,13 @@
  *  --------
  *  Navigation links related events. */
 
-/* General links */
-function eventBaseLink(target) {
-    /* Switching user position */
-    goto($(target).attr("href"));
-    
+/* Page switch */
+function eventSwitchPage() {
+    /* Closing sub navigation */
+    var buff = "div#topnav.open div.baseline," +
+            "div#topnav.opening div.baseline";
+    $(buff).trigger("mouseleave");
+
     /* Switching page disposition */
     var mode = $(page()).children("mode").text();
     if (mode !== $("body").attr("class")) {
@@ -21,12 +23,7 @@ function eventBaseLink(target) {
             ds = cfgetint("page", "page_topanoramic_speed");
             de = cfget("page", "page_topanoramic_easing");
         }
-        
-        /* Closing sub navigation */
-        var buff =  "div#topnav.open div.baseline," +
-                    "div#topnav.opening div.baseline";
-        $(buff).trigger("mouseleave");
-        
+
         /* Launching */
         $("div#header").addClass("switching");
         $("div#header").animate({
@@ -34,7 +31,7 @@ function eventBaseLink(target) {
         }, {
             duration: ds,
             easing: de,
-            step: function(now, fx) {
+            step: function() {
                 refreshAll();
             },
             complete: function() {
@@ -44,16 +41,61 @@ function eventBaseLink(target) {
             }
         });
     }
+
+    /* Switching body content */
+    $("div#body > div").animate({
+        opacity: 0
+    }, {
+        duration: cfgetint("body", "body_switchout_speed"),
+        easing: cfget("body", "body_switchout_easing"),
+        complete: function() {
+            loadBody(false);
+            buildBody();
+            $("div#body > div").animate({
+                opacity: 1
+            }, {
+                duration: cfgetint("body", "body_switchin_speed"),
+                easing: cfget("body", "body_switchin_easing"),
+                complete: function() {
+                    bindLinksEvents();
+                }
+            });
+        }
+    });
+}
+
+/* General links */
+function eventClassicLink(target) {
+    /* Switching user position */
+    goto($(target).attr("href"));
+
+    /* Switching page */
+    eventSwitchPage();
+}
+
+/* Rubric links */
+function eventRubricLink(target) {
+    /* Switching user position */
+    goto($(nav.tn).find("rubric#" + $(target).attr("href")).attr("target"));
+
+    /* Switching page */
+    eventSwitchPage();
 }
 
 /* Configure navigation links events */
 function bindLinksEvents() {
     /* Initial unbind */
     $("a").unbind();
-    
+
     /* Page change links */
-    $("a[href]:not(.lktmp)").click(function(event) {
+    $("a[href]:not(.tnl1)").click(function(event) {
         event.preventDefault();
-        eventBaseLink(this);
+        eventClassicLink(this);
+    });
+
+    /* Rubric change links */
+    $("a.tnl1[href]").click(function(event) {
+        event.preventDefault();
+        eventRubricLink(this);
     });
 }

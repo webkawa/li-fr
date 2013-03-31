@@ -2,6 +2,12 @@
  *  ------
  *  Initial data loading & DOM manipulations. */
 
+/* Layout */
+function initLayout() {
+    console.log($(page()).find("mode").text());
+    switchPageDisposition($(page()).find("mode").text());
+}
+
 /* Top navigation loader */
 function initLoadTopNav() {
     /* Cosmetic */
@@ -11,7 +17,7 @@ function initLoadTopNav() {
     var buff;
     $(nav.tn).find("nav topnav rubric").each(function () {
         buff =  '<li>' +
-                '<a href="' + $(this).attr("target") + '">' +
+                '<a href="' + $(this).attr("id") + '" class="tnl1">' +
                 $(this).attr("text") +
                 '</a>' +
                 '</li>';
@@ -23,7 +29,17 @@ function initLoadTopNav() {
 /* Banner */
 function initLoadBanner() {
     var buff =  '<div class="' +
-                navclass() +
+                navClass() +
                 ' selected"></div>';
     $("div#banner").append(buff);
+}
+
+/* Page content */
+function initBody() {
+    /* Load data */
+    loadBody(false);
+    buildBody();
+    
+    /* Remove initial hiding */
+    $("div#body > div").removeAttr("style");
 }

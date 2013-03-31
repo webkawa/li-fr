@@ -23,4 +23,8 @@
         <skin>S0</skin>
         <mode>normal</mode>
     </page>
+    <page id="500">
+        <skin>S0</skin>
+        <mode>normal</mode>
+    </page>
 </sitemap>
