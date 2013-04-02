@@ -74,8 +74,25 @@ function buildSubNavigation(id) {
 }
 
 /* Page content build */
+function buildSliders() {
+    var ct;
+    
+    /* Big slider */
+    if ($("div#body div.slider.big").length > 0) {
+        $("div#body div.slider.big div.slide").each(function() {
+            ct = $(this).clone();
+            $(this).empty();
+            $(this).append(ct);
+            $(this).children("div:first").removeAttr("class").addClass("container");
+        });
+    }
+}
 function buildBody() {
+    /* Immediate build */
     $("div#body").empty();
     $(nav.ct).find("*:first").attr("style", "opacity: 0");
     $("div#body").append($(nav.ct).find("*:first").xmlAsString());
+    
+    /* Differed operations */
+    buildSliders();
 }

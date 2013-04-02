@@ -2,6 +2,12 @@
  * ---------
  * Global layout display functions. */
 
+/* Body auto-resize */
+function refreshBody() {
+    /* Dependances */
+    refreshSliders();
+}
+
 /* Header auto-resize */
 function refreshHeader() {
     /* Dependances */
@@ -13,4 +19,5 @@ function refreshHeader() {
 function refreshAll() {
     /* Dependances */
     refreshHeader();
+    refreshBody();
 }

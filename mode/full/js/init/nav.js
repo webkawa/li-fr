@@ -7,7 +7,8 @@ var tnreq = jQuery.ajax({
     type: "GET",
     dataType: "xml",
     url: "../../data/content/nav.xml",
-    async: false
+    async: false,
+    cache: cfgetbool("options", "cache")
 });
 
 /* Navigation infos */
@@ -19,6 +20,7 @@ var nav = {
     tn: jQuery.parseXML(tnreq.responseText),
     ct: null
 };
+loadBody(false, false);
 
 /* User position switcher */
 function goto(id) {
@@ -59,6 +61,9 @@ function goto(id) {
         nav.l2 = false;
         nav.l3 = false;
     }
+
+    /* File load */
+    loadBody(false, true);
 }
 
 /* Potential navigation class getter */
@@ -98,26 +103,20 @@ function page() {
 }
 
 /* Page content loader */
-function loadBody(failsafe) {
+function loadBody(failsafe, async) {
     /* Loading */
-    var res = false;
     jQuery.ajax({
         type: "GET",
         dataType: "xml",
         url: "../../data/content/pages/" + nav.idp + ".xml",
-        async: false,
-        cache: false,
-        success: function() {
-            res = true;
-        }
+        async: async,
+        cache: cfgetbool("options", "cache")
     }).done(function(data) {
         nav.ct = data;
+    }).fail(function() {
+        if (!failsafe) {
+            goto("500");
+            loadBody(true, false);
+        }
     });
-
-
-    /* 500 redirect */
-    if (!failsafe && !res) {
-        goto("500");
-        loadBody(true);
-    }
 }

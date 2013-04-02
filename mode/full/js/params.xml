@@ -18,9 +18,13 @@
         <var name="subnav_switchin_easing">linear</var>
     </component>
     <component id="body">
-        <var name="body_switchout_speed">750</var>
+        <var name="body_switchout_speed">400</var>
         <var name="body_switchout_easing">swing</var>
-        <var name="body_switchin_speed">750</var>
+        <var name="body_switchin_speed">800</var>
         <var name="body_switchin_easing">swing</var>
+    </component>
+    <component id="options">
+        <var name="devmode">true</var>
+        <var name="cache">false</var>
     </component>
 </params>

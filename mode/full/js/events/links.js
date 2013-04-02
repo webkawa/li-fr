@@ -31,9 +31,7 @@ function eventSwitchPage() {
         }, {
             duration: ds,
             easing: de,
-            step: function() {
-                refreshAll();
-            },
+            step: refreshHeader,
             complete: function() {
                 $("div#header").removeAttr("style");
                 $("div#header").removeClass("switching");
@@ -49,13 +47,13 @@ function eventSwitchPage() {
         duration: cfgetint("body", "body_switchout_speed"),
         easing: cfget("body", "body_switchout_easing"),
         complete: function() {
-            loadBody(false);
             buildBody();
             $("div#body > div").animate({
                 opacity: 1
             }, {
                 duration: cfgetint("body", "body_switchin_speed"),
                 easing: cfget("body", "body_switchin_easing"),
+                step: refreshBody,
                 complete: function() {
                     bindLinksEvents();
                 }

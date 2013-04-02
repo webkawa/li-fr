@@ -1,0 +1,17 @@
+/*  sliders.css
+ *  -----------
+ *  Sliders relative classes. */
+
+/* Full size slider */
+div#body div.slider.big {
+    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+}
+div#body div.slider.big div.slide {
+    float: left;
+}
+div#body div.slider.big div.slide div.container {
+    width: 920px;
+    margin: 0px auto;
+}

@@ -4,7 +4,6 @@
 
 /* Layout */
 function initLayout() {
-    console.log($(page()).find("mode").text());
     switchPageDisposition($(page()).find("mode").text());
 }
 
@@ -37,7 +36,6 @@ function initLoadBanner() {
 /* Page content */
 function initBody() {
     /* Load data */
-    loadBody(false);
     buildBody();
     
     /* Remove initial hiding */
