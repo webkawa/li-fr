@@ -71,13 +71,13 @@ function navClassFor(id) {
     var target = $(smap).find("#" + id);
     if ($(target).is("index, page")) {
         if ($(target).parent().is("sitemap")) {
-            return $(target).children("skin").text();
+            return $(target).children('param[name="skin"]').text();
         }
         else {
-            return $(target).parents("l1").attr("skin");
+            return $(target).parents("l1").attr('param[name="skin"]');
         }
     } else {
-        return $(target).attr("skin");
+        return $(target).attr('param[name="skin"]');
     }
 }
 
@@ -116,7 +116,7 @@ function loadBody(failsafe, async) {
     }).fail(function() {
         if (!failsafe) {
             goto("500");
-            loadBody(true, false);
+            loadBody(true, true);
         }
     });
 }

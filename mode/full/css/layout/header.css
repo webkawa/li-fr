@@ -49,6 +49,7 @@ div#topnav div.baseline div.nav {
 div#topnav div.baseline div.nav ul.links {
     text-align: center;
     margin: 4px;
+    padding: 0px;
 }
 div#topnav div.baseline div.nav ul.links li {
     display: inline;

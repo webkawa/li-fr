@@ -10,7 +10,7 @@ function eventSwitchPage() {
     $(buff).trigger("mouseleave");
 
     /* Switching page disposition */
-    var mode = $(page()).children("mode").text();
+    var mode = ppget("mode");
     if (mode !== $("body").attr("class")) {
         /* Getting move vars */
         var dh, ds, de;
@@ -31,7 +31,7 @@ function eventSwitchPage() {
         }, {
             duration: ds,
             easing: de,
-            step: refreshHeader,
+            progress: refreshHeader,
             complete: function() {
                 $("div#header").removeAttr("style");
                 $("div#header").removeClass("switching");
@@ -53,7 +53,7 @@ function eventSwitchPage() {
             }, {
                 duration: cfgetint("body", "body_switchin_speed"),
                 easing: cfget("body", "body_switchin_easing"),
-                step: refreshBody,
+                progress: refreshBody,
                 complete: function() {
                     bindLinksEvents();
                 }
@@ -86,7 +86,7 @@ function bindLinksEvents() {
     $("a").unbind();
 
     /* Page change links */
-    $("a[href]:not(.tnl1)").click(function(event) {
+    $("a[href]:not(.tnl1, .sn)").click(function(event) {
         event.preventDefault();
         eventClassicLink(this);
     });
@@ -95,5 +95,11 @@ function bindLinksEvents() {
     $("a.tnl1[href]").click(function(event) {
         event.preventDefault();
         eventRubricLink(this);
+    });
+    
+    /* Slider navigation links */
+    $("a.sn[href]").click(function(event) {
+       event.preventDefault();
+       eventSwitchSlide(this);
     });
 }

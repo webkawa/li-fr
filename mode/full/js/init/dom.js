@@ -4,7 +4,7 @@
 
 /* Layout */
 function initLayout() {
-    switchPageDisposition($(page()).find("mode").text());
+    switchPageDisposition(ppget("mode"));
 }
 
 /* Top navigation loader */

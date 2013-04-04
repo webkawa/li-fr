@@ -4,6 +4,13 @@
 
 /* Body auto-resize */
 function refreshBody() {
+    /* Dimensions */
+    $("div#body").realHeight(
+        $(window).height() -
+        $("div#header").outerHeight(true) -
+        $("div#footer").outerHeight(true)
+    );
+    
     /* Dependances */
     refreshSliders();
 }

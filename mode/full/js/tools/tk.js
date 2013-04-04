@@ -73,3 +73,14 @@ function cfgetint(component, variable) {
 function cfgetbool(component, variable) {
     return cfget(component, variable) === 'true';
 }
+
+/* Page parameters access */
+function ppget(param) {
+    return $(page()).children('param[name="' + param + '"]').text();
+}
+function ppgetint(param) {
+    return parseInt(ppget(param));
+}
+function ppgetbool(param) {
+    return ppget(param) === 'true';
+}

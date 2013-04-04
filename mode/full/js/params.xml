@@ -22,6 +22,8 @@
         <var name="body_switchout_easing">swing</var>
         <var name="body_switchin_speed">800</var>
         <var name="body_switchin_easing">swing</var>
+        <var name="bigslider_switch_speed">800</var>
+        <var name="bigslider_switch_easing">easeOutExpo</var>
     </component>
     <component id="options">
         <var name="devmode">true</var>
