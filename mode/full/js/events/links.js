@@ -41,14 +41,14 @@ function eventSwitchPage() {
     }
 
     /* Switching body content */
-    $("div#body > div").animate({
+    $("div#body").animate({
         opacity: 0
     }, {
         duration: cfgetint("body", "body_switchout_speed"),
         easing: cfget("body", "body_switchout_easing"),
         complete: function() {
             buildBody();
-            $("div#body > div").animate({
+            $("div#body").animate({
                 opacity: 1
             }, {
                 duration: cfgetint("body", "body_switchin_speed"),
@@ -56,6 +56,7 @@ function eventSwitchPage() {
                 progress: refreshBody,
                 complete: function() {
                     bindLinksEvents();
+                    bindSliderEvents();
                 }
             });
         }

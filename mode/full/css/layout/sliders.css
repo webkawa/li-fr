@@ -4,23 +4,24 @@
 
 /* Full size slider */
 div#body div.slidernav.big {
-    position: absolute;
     z-index: 2;
-    width: 100%;
-    min-height: 30px;
+    position: absolute;
     bottom: 0px;
+    left: 0px;
+    right: 0px;
+    width: 360px;
+    margin: 0px auto 10px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    background: palegreen;
 }
 div#body div.slidernav.big ul {
     position: static;
-    width: 360px;
     height: 20px;
     padding: 0px;
-    margin: 0px auto;
+    margin: 5px auto 15px;
     text-align: center;
     font-size: 12px;
-    background: palegreen;
-    border: 1px solid grey;
-    border-radius: 5px;
     white-space: nowrap;
 }
 div#body div.slidernav.big ul li {
@@ -29,6 +30,23 @@ div#body div.slidernav.big ul li {
 }
 div#body div.slidernav.big ul li.selected {
     color: red;
+}
+div#body div.slidernav.big div.loader {
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    height: 15px;
+}
+div#body div.slidernav.big div.loader div.up {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+div#body div.slidernav.big div.loader div.down {
+    position: absolute;
+    height: 100%;
+    background: red;
 }
 div#body div.slider.big {
     overflow: hidden;

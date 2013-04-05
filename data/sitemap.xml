@@ -5,6 +5,10 @@
         <index id="l1r1index">
             <param name="mode">panoramic</param>
         </index>
+        <page id="foo">
+            <param name="mode">normal</param>
+            <param name="type">editorial</param>
+        </page>
     </l1>
     <l1 id="l1r2">
         <param name="skin">S2</param>
@@ -18,11 +22,15 @@
             <param name="mode">panoramic</param>
         </index>
     </l1>
-    <index id="hp">
+    <index id="devstartpage">
+        <param name="type">redirection</param>
+        <param name="destination">foo</param>
+    </index>
+    <page id="hp">
         <param name="skin">S0</param>
         <param name="mode">panoramic</param>
         <param name="type">bigslider</param>
-    </index>
+    </page>
     <page id="404">
         <param name="skin">S0</param>
         <param name="mode">normal</param>

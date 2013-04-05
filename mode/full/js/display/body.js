@@ -7,7 +7,6 @@ function refreshSliderBig() {
     var slider = $("div#body div.slider.big");
     var slides = $(slider).children("div.slide");
     var sslide = $(slides).filter(".selected");
-    var snav = $("div#body div.slidernav.big");
     var vheight = $(window).height() - $("div#header").outerHeight(true) - $("div#footer").outerHeight(true);
     var vwidth = $("div#body").width();
     
@@ -19,9 +18,6 @@ function refreshSliderBig() {
     $(slides).realHeight(vheight);
     $(slides).realWidth(vwidth);
     
-    /* Slider navigation */
-    $(snav).realHeight($(slider).height() / 10);
-    
     /* Disposition */
     $(slider).css("left", -($(sslide).prevAll().length * $(slides).first().outerWidth(true)) + "px");
     
@@ -32,7 +28,7 @@ function refreshSliderBig() {
     });
 }
 function refreshSliders() {
-    if ($("div#body div.slider.big").length > 0) {
+    if (ppget("type") === "bigslider") {
         refreshSliderBig();
     }
 }

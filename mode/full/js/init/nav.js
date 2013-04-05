@@ -13,17 +13,17 @@ var tnreq = jQuery.ajax({
 
 /* Navigation infos */
 var nav = {
-    idp: $(smap).find("sitemap > index:first").attr("id"),
-    l1: false,
-    l2: false,
-    l3: false,
-    tn: jQuery.parseXML(tnreq.responseText),
-    ct: null
+    tn: jQuery.parseXML(tnreq.responseText)
 };
-loadBody(false, false);
+goto($(smap).find("sitemap > index:first").attr("id"));
 
 /* User position switcher */
 function goto(id) {
+    /* Redirection case */
+    if ($(smap).find("#" + id).children('param[name="type"]').text() === "redirection") {
+        id = $(smap).find("#" + id).children('param[name="destination"]').text();
+    }
+    
     /* Page selection */
     var page = $(smap).find("#" + id);
 
@@ -74,10 +74,10 @@ function navClassFor(id) {
             return $(target).children('param[name="skin"]').text();
         }
         else {
-            return $(target).parents("l1").attr('param[name="skin"]');
+            return $(target).parents("l1").children('param[name="skin"]').text();
         }
     } else {
-        return $(target).attr('param[name="skin"]');
+        return $(target).children('param[name="skin"]').text();
     }
 }
 

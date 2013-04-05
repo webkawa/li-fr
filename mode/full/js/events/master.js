@@ -16,4 +16,5 @@ function bindAllEvents() {
     /* Dependances */
     bindTopNavEvents();
     bindLinksEvents();
+    bindSliderEvents();
 }

@@ -27,15 +27,14 @@ function initLoadTopNav() {
 
 /* Banner */
 function initLoadBanner() {
-    var buff =  '<div class="' +
-                navClass() +
-                ' selected"></div>';
+    var buff =  '<div class="selected skined"></div>';
     $("div#banner").append(buff);
 }
 
 /* Page content */
 function initBody() {
     /* Load data */
+    loadBody(false, false);
     buildBody();
     
     /* Remove initial hiding */

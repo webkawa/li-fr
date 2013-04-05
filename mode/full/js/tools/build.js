@@ -140,7 +140,14 @@ function buildSliders() {
         $(slider).append(ctf);
 
         /* Navigation add */
-        $("div#body").append('<div class="slidernav big"><ul></ul></div>');
+        $("div#body").append(
+            '<div class="slidernav big">' +
+                '<ul></ul>' +
+                '<div class="loader">' +
+                    '<div class="up"></div>' +
+                    '<div class="down" style="width: 0%"></div>' +
+                '</div>' +
+            '</div>');
 
         unav = $("div#body div.slidernav.big ul");
         $(slides).each(function(idx) {
@@ -148,6 +155,8 @@ function buildSliders() {
         });
         $(unav).prepend('<li><a class="sn" href="back">BACK</a></li>');
         $(unav).append('<li><a class="sn" href="next">NEXT</a></li>');
+        
+        /* Loader add */
 
         /* Initial selection */
         $(slides).first().addClass("selected");
@@ -160,10 +169,9 @@ function buildBody() {
     /* Immediate build */
     $("div#body").empty();
     $("div#body").append($(nav.ct).find(":first").xmlAsString());
+    $(".skined").removeClass("S0 S1 S2");
+    $(".skined").addClass(navClass());
 
     /* Differed operations */
     buildSliders();
-
-    /* Post operations */
-    $("div#body").children().attr("style", "opacity: 0");
 }

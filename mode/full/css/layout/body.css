@@ -2,3 +2,9 @@
  * --------
  * Body layout classes. */
 
+/* Editorial content */
+div#body div.editorial {
+    overflow: hidden;
+    width: 920px;
+    margin: 0px auto;
+}
