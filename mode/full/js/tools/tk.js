@@ -76,11 +76,47 @@ function cfgetbool(component, variable) {
 
 /* Page parameters access */
 function ppget(param) {
-    return $(page()).children('param[name="' + param + '"]').text();
+    return $(getpage()).children('param[name="' + param + '"]').text();
 }
 function ppgetint(param) {
     return parseInt(ppget(param));
 }
 function ppgetbool(param) {
     return ppget(param) === 'true';
+}
+
+
+/* Skin getter */
+function getskinfor(id) {
+    var target = $(smap).find("#" + id);
+    if ($(target).is("index, page")) {
+        if ($(target).parent().is("sitemap")) {
+            return $(target).children('param[name="skin"]').text();
+        }
+        else {
+            return $(target).parents("l1").children('param[name="skin"]').text();
+        }
+    } else {
+        return $(target).children('param[name="skin"]').text();
+    }
+}
+function getskin() {
+    return getskinfor(nav.idp);
+}
+
+
+
+/* Page getter */
+function getpagefor(id) {
+    var block = $(smap).find("#" + id);
+    if ($(block).is("index, page")) {
+        return $(block);
+    } else if ($(block).is("l1, l2, l3")) {
+        return $(block).children("index:first");
+    }
+}
+
+/* Current page getter */
+function getpage() {
+    return getpagefor(nav.idp);
 }

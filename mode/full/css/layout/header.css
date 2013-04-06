@@ -19,9 +19,16 @@ div#banner {
 }
 div#banner div {
     position: absolute;
+    width: 100%;
     margin: 5px auto;
     border-width: 1px 0px;
     border-style: solid;
+}
+div#banner div.down {
+    z-index: 8;
+}
+div#banner div.up {
+    z-index: 9;
 }
 
 /* Top navigation */

@@ -2,10 +2,22 @@
  *  --------
  *  Pure DOM manipulation functions. */
 
-/* Page disposition mode switching */
+/* Page switching */
 function switchPageDisposition(mode) {
     $("body").removeClass("panoramic normal");
     $("body").addClass(mode);
+}
+
+/* Header switching */
+function switchStartBanner() {
+    var kw = cfget("options", "skins_keyword");
+    $("div#banner div").addClass("up").css("opacity", "1");
+    $("div#banner").append('<div class="down ' + kw + '"></div>');
+    buildSkinsWith($("div#banner"), getskin());
+}
+function switchEndBanner() {
+    $("div#banner div.up").remove();
+    $("div#banner div.down").removeClass("down");
 }
 
 /* Top navigation mode switching */
@@ -123,6 +135,7 @@ function buildSliders() {
         var slider = $("div#body div.slider.big");
         var slides = $(slider).children("div.slide");
         var ct, ctl, ctf, unav;
+        var kw = cfget("options", "skins_keyword");
 
         /* Individual treatments */
         $(slides).each(function() {
@@ -141,7 +154,7 @@ function buildSliders() {
 
         /* Navigation add */
         $("div#body").append(
-            '<div class="slidernav big">' +
+            '<div class="slidernav big ' + kw + '">' +
                 '<ul></ul>' +
                 '<div class="loader">' +
                     '<div class="up"></div>' +
@@ -164,13 +177,21 @@ function buildSliders() {
     }
 }
 
+/* Skin management */
+function buildSkinsWith(target, skin) {
+    var kw = cfget("options", "skins_keyword");
+    $(target).find("." + kw).removeClass(kw).addClass(kw + skin);
+}
+function buildSkins() {
+    buildSkinsWith($("body").find("*"), getskin());
+}
+
 /* Page content build */
 function buildBody() {
     /* Immediate build */
     $("div#body").empty();
     $("div#body").append($(nav.ct).find(":first").xmlAsString());
-    $(".skined").removeClass("S0 S1 S2");
-    $(".skined").addClass(navClass());
+    buildSkins();
 
     /* Differed operations */
     buildSliders();

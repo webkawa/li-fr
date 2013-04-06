@@ -27,6 +27,7 @@ $(document).ready(function() {
         subNavCloseH        :   $("div#topnav div.subnav").height(),
         subNavCloseOpacity  :   $("div#topnav div.subnav").css("opacity"),
         subNavOpenH         :   subNavOpenH,
-        subNavOpenOpacity   :   subNavOpenOpacity
+        subNavOpenOpacity   :   subNavOpenOpacity,
+        skinsKW             :   cfget("options", "skins_keyword")
     };
 });

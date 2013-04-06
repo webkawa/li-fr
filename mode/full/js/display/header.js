@@ -4,17 +4,17 @@
 
 /* Banner auto-resize */
 function refreshBanner() {
+    var banner = $("div#banner");
     var headerIH = $("div#header").innerHeight();
     
     /* Resize */
-    $("div#banner").realHeight(headerIH);
-    $("div#banner div").realHeight($("div#banner").innerHeight());
-    $("div#banner div").width($("div#banner").innerWidth());
+    $(banner).realHeight(headerIH);
+    $(banner).children("div").realHeight($("div#banner").innerHeight());
     
     /* Replace */
-    $("div#banner").css(
+    $(banner).css(
             "top", 
-            (headerIH - $("div#banner").outerHeight(true)) / 2 + "px"
+            (headerIH - $(banner).outerHeight(true)) / 2 + "px"
     );
 }
 

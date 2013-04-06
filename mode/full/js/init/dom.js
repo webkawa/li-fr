@@ -27,7 +27,8 @@ function initLoadTopNav() {
 
 /* Banner */
 function initLoadBanner() {
-    var buff =  '<div class="selected skined"></div>';
+    var kw = cfget("options", "skins_keyword");
+    var buff =  '<div class="' + kw + '"></div>';
     $("div#banner").append(buff);
 }
 

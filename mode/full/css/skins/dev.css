@@ -2,8 +2,14 @@
  * -------
  * Temporary skin-related information file. */
 
-/* S0 : HP */
-div#banner div.S0 {
+/* S0 */
+div#banner div.skinS0 {
     background: black url('../../../../data/media/000_stockshot.png') no-repeat center center;
+    border-color: #eaeaea;
+}
+
+/* S1 */
+div#banner div.skinS1 {
+    background: black url('../../../../data/media/001_stockshot.png') no-repeat center center;
     border-color: #eaeaea;
 }

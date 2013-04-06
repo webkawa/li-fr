@@ -31,6 +31,11 @@ function goto(id) {
     if ($(page).is("l1, l2, l3") && $(page).children("index").length > 0) {
         page = $(smap).find("#" + id + " > index:first");
     }
+    
+    /* Preceding saving */
+    (nav.pre == null) ? 
+        nav.pre = [nav.idp] :
+        nav.pre[nav.pre.length] = nav.idp;
 
     /* Page case */
     if ($(page).is("index, page")) {
@@ -64,42 +69,6 @@ function goto(id) {
 
     /* File load */
     loadBody(false, true);
-}
-
-/* Potential navigation class getter */
-function navClassFor(id) {
-    var target = $(smap).find("#" + id);
-    if ($(target).is("index, page")) {
-        if ($(target).parent().is("sitemap")) {
-            return $(target).children('param[name="skin"]').text();
-        }
-        else {
-            return $(target).parents("l1").children('param[name="skin"]').text();
-        }
-    } else {
-        return $(target).children('param[name="skin"]').text();
-    }
-}
-
-/* Current navigation class getter */
-function navClass() {
-    return navClassFor(nav.idp);
-}
-
-
-/* Page getter */
-function pageFor(id) {
-    var block = $(smap).find("#" + id);
-    if ($(block).is("index, page")) {
-        return $(block);
-    } else if ($(block).is("l1, l2, l3")) {
-        return $(block).children("index:first");
-    }
-}
-
-/* Current page getter */
-function page() {
-    return pageFor(nav.idp);
 }
 
 /* Page content loader */

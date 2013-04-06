@@ -7,6 +7,10 @@
         <var name="page_tonormal_speed">1000</var>
         <var name="page_tonormal_easing">easeOutExpo</var>
     </component>
+    <component id="header">
+        <var name="banner_switch_speed">1000</var>
+        <var name="banner_switch_easing">linear</var>
+    </component>
     <component id="topnav">
         <var name="subnav_open_speed">750</var>
         <var name="subnav_open_easing">easeOutExpo</var>
@@ -31,5 +35,6 @@
     <component id="options">
         <var name="devmode">true</var>
         <var name="cache">false</var>
+        <var name="skins_keyword">skin</var>
     </component>
 </params>

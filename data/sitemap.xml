@@ -11,25 +11,25 @@
         </page>
     </l1>
     <l1 id="l1r2">
-        <param name="skin">S2</param>
+        <param name="skin">S1</param>
         <index id="l1r2index">
             <param name="mode">panoramic</param>
         </index>
     </l1>
     <l1 id="l1r3">
-        <param name="skin">S3</param>
+        <param name="skin">S1</param>
         <index id="l1r3index">
             <param name="mode">panoramic</param>
         </index>
     </l1>
-    <index id="devstartpage">
-        <param name="type">redirection</param>
-        <param name="destination">foo</param>
-    </index>
-    <page id="hp">
+    <index id="hp">
         <param name="skin">S0</param>
         <param name="mode">panoramic</param>
         <param name="type">bigslider</param>
+    </index>
+    <page id="redirect">
+        <param name="type">redirection</param>
+        <param name="destination">foo</param>
     </page>
     <page id="404">
         <param name="skin">S0</param>
