@@ -2,23 +2,27 @@
  * ---------
  * Header specific display functions. */
 
-/* Banner auto-resize */
-function refreshBanner() {
-    var banner = $("div#banner");
-    var headerIH = $("div#header").innerHeight();
+/* Banner auto-resize
+ * ------------------
+ *  s.header            > div#header
+ *  s.banner            > div#banner    */
+function refreshBanner(s) {
+    var headerIH = $(s.header).innerHeight();
     
     /* Resize */
-    $(banner).realHeight(headerIH);
-    $(banner).children("div").realHeight($("div#banner").innerHeight());
+    $(s.banner).realHeight(headerIH);
+    $(s.banner).children("div").realHeight($(s.banner).innerHeight());
     
     /* Replace */
-    $(banner).css(
+    $(s.banner).css(
             "top", 
-            (headerIH - $(banner).outerHeight(true)) / 2 + "px"
+            (headerIH - $(s.banner).outerHeight(true)) / 2 + "px"
     );
 }
 
-/* Sub navigation columns auto-resize */
-function refreshSubNavContentColumns() {
-    $("div#topnav div.baseline div.subnav div.content div.column").realHeight(constants.subNavOpenH);
+/* Sub navigation columns auto-resize
+ * ----------------------------------
+ *  s.subnavctcols      > div#topnav div.baseline div.subnav div.content div.column         */
+function refreshSubNavContentColumns(s) {
+    $(s.subnavctcols).realHeight(constants.subNavOpenH);
 }

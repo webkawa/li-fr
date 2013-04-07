@@ -5,7 +5,7 @@
 function bindAllEvents() {
     /* Display resize */
     $(window).resize(function() {
-        refreshAll();
+        refreshAll(refreshAllSelector());
     });
 
     /* DOM ready */
@@ -17,4 +17,5 @@ function bindAllEvents() {
     bindTopNavEvents();
     bindLinksEvents();
     bindSliderEvents();
+    bindEditorialEvents();
 }

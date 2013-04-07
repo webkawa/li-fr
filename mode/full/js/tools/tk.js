@@ -70,6 +70,9 @@ function cfget(component, variable) {
 function cfgetint(component, variable) {
     return parseInt(cfget(component, variable));
 }
+function cfgetfloat(component, variable) {
+    return parseFloat(cfget(component, variable));
+}
 function cfgetbool(component, variable) {
     return cfget(component, variable) === 'true';
 }

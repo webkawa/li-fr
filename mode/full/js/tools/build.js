@@ -85,54 +85,94 @@ function buildSubNavigation(id) {
     buildSubNavigationColumn($(subnavct).children("div.column.right"), $(data).find('column[position="right"]'));
 }
 
+/* Editorial build */
+function switchStartEditorialScroll() {
+    $("div#editorial div.scrollzone div.scrollbar").addClass("scrolling");
+}
+function switchEndEditorialScroll() {
+    $("div#editorial div.scrollzone div.scrollbar").removeClass("scrolling");
+}
+function buildEditorial() {
+    if (ppget("type") === "editorial") {
+        /* Content zone */
+        var buff = $("div#editorial").children().clone();
+        $("div#editorial").empty();
+        $("div#editorial").append('<div class="content"></div>');
+        $("div#editorial div.content").append(buff);
+
+        /* Scroller */
+        if (ppget("scroll") === "classic") {
+            /* Content size */
+            $("div#editorial div.content").addClass("small");
+
+            /* Scroll tools */
+            buff = '<div class="scrollzone">' +
+                        '<div class="scrollbar">' +
+                            '<div class="scroller" style="top: 0px"></div>' +
+                        '</div>' +
+                   '</div>';
+            $("div#editorial").append(buff);
+            
+            /* Activate scroll */
+            $("div#editorial div.scrollzone div.scrollbar div.scroller").draggable({
+                containment: "div#editorial div.scrollzone div.scrollbar",
+                axis: "y"
+            });
+        } else {
+            /* Content zone */
+            $("div#editorial div.content").addClass("large");
+        }
+    }
+}
+
 /* Sliders build */
 function switchStartBigSlider() {
     /* Adding classes */
-    $("div#body div.slider.big").addClass("switching");
-    $("div#body div.slidernav.big").addClass("switching");
+    $("div#bigslider").addClass("switching");
+    $("div#bigslidernav").addClass("switching");
 }
 function switchEndBigSlider(dir) {
-    var slider = $("div#body div.slider.big");
-    var snav = $("div#body div.slidernav.big");
+    var slider = $("div#bigslider");
+    var snav = $("div#bigslidernav");
     var sslide = $(slider).children("div.slide.selected");
     var rp = false;
     var rpt, rptl;
-    
+
     /* Removing switch info */
     $(slider).removeClass("switching");
     $(snav).removeClass("switching");
-    
+
     /* Moving select */
-    dir ? 
-        $("div#body div.slider.big div.slide.selected").next().addClass("selected") : 
-        $("div#body div.slider.big div.slide.selected").prev().addClass("selected");
+    dir ?
+            $("div#bigslider div.slide.selected").next().addClass("selected") :
+            $("div#bigslider div.slide.selected").prev().addClass("selected");
     $(sslide).removeClass("selected");
-    
+
     /* Replacing if needed */
-    if ($("div#body div.slider.big div.slide:first").hasClass("selected")) {
+    if ($("div#bigslider div.slide:first").hasClass("selected")) {
         rp = true;
-        rpt = $("div#body div.slider.big div.slide:last").prev();
-        rptl = -($("div#body div.slider.big div.slide").length - 2) * $(rpt).outerWidth(true);
+        rpt = $("div#bigslider div.slide:last").prev();
+        rptl = -($("div#bigslider div.slide").length - 2) * $(rpt).outerWidth(true);
     }
-    if ($("div#body div.slider.big div.slide:last").hasClass("selected")) {
+    if ($("div#bigslider div.slide:last").hasClass("selected")) {
         rp = true;
-        rpt = $("div#body div.slider.big div.slide:first").next();
+        rpt = $("div#bigslider div.slide:first").next();
         rptl = -($(rpt).outerWidth(true));
     }
     if (rp) {
-        $("div#body div.slider.big div.slide.selected").removeClass("selected");
+        $("div#bigslider div.slide.selected").removeClass("selected");
         $(rpt).addClass("selected");
-        $("div#body div.slider.big").css("left", rptl + "px");
+        $("div#bigslider").css("left", rptl + "px");
     }
-    
+
     /* Updating navigation */
-    $("div#body div.slidernav.big ul li.selected").removeClass("selected");
-    $("div#body div.slidernav.big ul li:eq(" + $(slider).children("div.slide.selected").index() + ")").addClass("selected");
+    $("div#bigslidernav ul li.selected").removeClass("selected");
+    $("div#bigslidernav ul li:eq(" + $(slider).children("div.slide.selected").index() + ")").addClass("selected");
 }
 function buildSliders() {
     /* Big slider */
     if (ppget("type") === "bigslider") {
-        var slider = $("div#body div.slider.big");
+        var slider = $("div#bigslider");
         var slides = $(slider).children("div.slide");
         var ct, ctl, ctf, unav;
         var kw = cfget("options", "skins_keyword");
@@ -154,21 +194,21 @@ function buildSliders() {
 
         /* Navigation add */
         $("div#body").append(
-            '<div class="slidernav big ' + kw + '">' +
+                '<div id="bigslidernav" class="' + kw + '">' +
                 '<ul></ul>' +
                 '<div class="loader">' +
-                    '<div class="up"></div>' +
-                    '<div class="down" style="width: 0%"></div>' +
+                '<div class="up"></div>' +
+                '<div class="down" style="width: 0%"></div>' +
                 '</div>' +
-            '</div>');
+                '</div>');
 
-        unav = $("div#body div.slidernav.big ul");
+        unav = $("div#bigslidernav ul");
         $(slides).each(function(idx) {
             $(unav).append('<li>' + idx + '</li>');
         });
         $(unav).prepend('<li><a class="sn" href="back">BACK</a></li>');
         $(unav).append('<li><a class="sn" href="next">NEXT</a></li>');
-        
+
         /* Loader add */
 
         /* Initial selection */
@@ -195,4 +235,5 @@ function buildBody() {
 
     /* Differed operations */
     buildSliders();
+    buildEditorial();
 }

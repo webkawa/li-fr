@@ -4,7 +4,7 @@
     <topnav>
         <rubric id="l1r1" target="hp" text="Talk it">
             <column position="left">
-                <h1 target="foo">That's a link all right</h1>
+                <h1 target="redirect">That's a link all right</h1>
                 <h2 target="goto">And that's a redirection</h2>
                 <h2 target="l1r1_a2">Subrubric A2</h2>
                 <h1 target="l1r1_b">Subrubric B</h1>

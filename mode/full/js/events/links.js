@@ -25,13 +25,16 @@ function eventSwitchPage() {
         }
 
         /* Launching */
+        var slr = refreshHeaderSelector();
         $("div#header").addClass("switching");
         $("div#header").animate({
             height: dh
         }, {
             duration: ds,
             easing: de,
-            progress: refreshHeader,
+            progress: function() {
+                refreshHeader(slr);
+            },
             complete: function() {
                 $("div#header").removeAttr("style");
                 $("div#header").removeClass("switching");
@@ -43,7 +46,7 @@ function eventSwitchPage() {
     /* Switching banner */
     if (getskinfor(nav.pre[nav.pre.length - 1]) !== getskin()) {
         switchStartBanner();
-        refreshHeader();
+        refreshHeader(refreshHeaderSelector());
         var url = 
             $("div#banner div.down").css("background-image")
                 .replace('url(', '')
@@ -71,12 +74,16 @@ function eventSwitchPage() {
         complete: function() {
             buildBody();
             buildSkins();
+            
+            var slr = refreshBodySelector();
             $("div#body").animate({
                 opacity: 1
             }, {
                 duration: cfgetint("body", "body_switchin_speed"),
                 easing: cfget("body", "body_switchin_easing"),
-                progress: refreshBody,
+                progress: function() {
+                    refreshBody(slr);
+                },
                 complete: function() {
                     bindLinksEvents();
                     bindSliderEvents();

@@ -4,10 +4,10 @@
 
 /* Slide switching */
 function eventSwitchSlideBig(target) {
-    var snav = $("div#body div.slidernav.big");
+    var snav = $("div#bigslidernav");
     var sload = $(snav).children("div.loader");
     var sloadbg = $(sload).children("div.down");
-    var slider = $("div#body div.slider.big");
+    var slider = $("div#bigslider");
     var slides = $(slider).children("div.slide");
     var swidth = $(slides).filter(":first").outerWidth(true);
     var dir = $(target).attr("href") === "next";
@@ -43,7 +43,7 @@ function eventSwitchSlideBig(target) {
 }
 function eventSwitchSlide(target) {
     /* Big slider */
-    if ($(target).parents("div.slidernav:not(.switching)").hasClass("big")) {
+    if ($(target).parents("div#bigslidernav").is(":not(.switching)")) {
         eventSwitchSlideBig(target);
     }
 }
@@ -53,7 +53,7 @@ function bindSliderEvents() {
     /* Big sliders */
     if (ppget("type") === "bigslider") {
         /* Loader */
-        var snav = $("div#body div.slidernav.big");
+        var snav = $("div#bigslidernav");
         var snavli = $(snav).find("ul li");
         var sload = $(snav).children("div.loader");
         var sloadbg = $(sload).children("div.down");

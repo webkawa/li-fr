@@ -5,7 +5,7 @@
 /* Header size setter */
 function setHeaderHeight(i) {
     $("div#header").height(i);
-    refreshAll();
+    refreshAll(refreshAllSelector());
 }
 
 /* Page mode switcher */
@@ -17,7 +17,7 @@ function switchPageDispo() {
         $("body").removeClass("panoramic");
         $("body").addClass("normal");
     }
-    refreshAll();
+    refreshAll(refreshAllSelector());
 }
 
 /* Nav mode switcher */
@@ -29,7 +29,7 @@ function switchNavDisposition() {
         $("div#topnav").removeClass("close");
         $("div#topnav").addClass("open");
     }
-    refreshHeader();
+    refreshHeader(refreshHeaderSelector());
 }
 
 /* Social tools mode switcher */

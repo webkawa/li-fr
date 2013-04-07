@@ -30,7 +30,11 @@
         <var name="bigslider_switch_easing">easeOutExpo</var>
         <var name="bigslider_autochange_speed">5000</var>
         <var name="bigslider_autochange_easing">linear</var>
-        <var name="bigslider_autochange_direction">true</var> 
+        <var name="bigslider_autochange_direction">true</var>
+        <var name="editorial_scroller_speed">250</var>
+        <var name="editorial_scroller_easing">swing</var>
+        <var name="editorial_scroller_distance">200</var>
+        <var name="editorial_scroller_multiplier">1.5</var>
     </component>
     <component id="options">
         <var name="devmode">true</var>

@@ -2,33 +2,69 @@
  * ---------
  * Body specific display functions. */
 
-/* Sliders management */
-function refreshSliderBig() {
-    var slider = $("div#body div.slider.big");
-    var slides = $(slider).children("div.slide");
-    var sslide = $(slides).filter(".selected");
-    var vheight = $(window).height() - $("div#header").outerHeight(true) - $("div#footer").outerHeight(true);
-    var vwidth = $("div#body").width();
+/* Editorial management
+ * --------------------
+ *  s.body          > div#body
+ *  s.editorial     > div#editorial
+ *  s.content       > div#editorial div.content
+ *  s.scrollzone    > div#editorial div.content div.scrollzone
+ *  s.scrollbar     > div#editorial div.content div.scrollzone div.scrollbar
+ *  s.scroller      > div#editorial div.content div.scrollzone div.scrollbar div.scroller */
+function refreshEditorial(s) {
+    var bodyH = $(s.body).height();
+    
+    /* Content */
+    $(s.editorial).height(bodyH);
+    
+    /* Scroll zone and bar */
+    $(s.scrollzone).realHeight(bodyH);
+    $(s.scrollbar).realHeight($(s.scrollzone).height());
+    
+    /* Scroller */
+    var div = Math.min($(s.editorial).height() / $(s.content).outerHeight(false), 1);
+    $(s.scroller).realHeight($(s.scrollbar).height() * div);
+}
+
+/* Sliders management
+ * ------------------
+ *  s.header            > div#header
+ *  s.body              > div#body
+ *  s.bigsl             > div#bigslider
+ *  s.bigslslides       > div#bigslider div.slides
+ *  s.bigslsslide       > div#bigslider div.slides.selected
+ *  s.footer            > div#footer                                    */
+function refreshSliderBig(s) {
+    var vheight = $(window).height() - $(s.header).outerHeight(true) - $(s.footer).outerHeight(true);
+    var vwidth = $(s.body).width();
     
     /* Slider */
-    $(slider).realHeight(vheight);
-    $(slider).realWidth(vwidth * $(slides).length);
+    $(s.bigsl).realHeight(vheight);
+    $(s.bigsl).realWidth(vwidth * $(s.bigslslides).length);
     
     /* Slides */
-    $(slides).realHeight(vheight);
-    $(slides).realWidth(vwidth);
+    $(s.bigslslides).realHeight(vheight);
+    $(s.bigslslides).realWidth(vwidth);
     
     /* Disposition */
-    $(slider).css("left", -($(sslide).prevAll().length * $(slides).first().outerWidth(true)) + "px");
+    $(s.bigsl).css("left", -($(s.bigslsslide).prevAll().length * $(s.bigslslides).first().outerWidth(true)) + "px");
     
     /* Dependances */
-    $(slides).each(function() {
+    $(s.bigslslides).each(function() {
         var ctr = $(this).children("div.container");
         $(ctr).css("margin-top", (($(this).height() - $(ctr).height()) / 2) + "px");
     });
 }
-function refreshSliders() {
+
+/* Global sliders refresh
+ * ----------------------
+ *  s.header            > div#header
+ *  s.body              > div#body
+ *  s.bigsl             > div#bigslider
+ *  s.bigslslides       > div#bigslider div.slides
+ *  s.bigslsslide       > div#bigslider div.slides.selected
+ *  s.footer            > div#footer                                */
+function refreshSliders(s) {
     if (ppget("type") === "bigslider") {
-        refreshSliderBig();
+        refreshSliderBig(s);
     }
 }

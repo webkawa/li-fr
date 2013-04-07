@@ -3,8 +3,36 @@
  * Body layout classes. */
 
 /* Editorial content */
-div#body div.editorial {
+div#editorial {
     overflow: hidden;
     width: 920px;
     margin: 0px auto;
+    padding: 0px !important;
+}
+div#editorial div.content {
+    display: inline-block;
+}
+div#editorial div.content.small {
+    width: 880px;
+}
+div#editorial div.content.large {
+    width: 100%;
+}
+
+/* Main scrollbar */
+div#editorial div.scrollzone {
+    display: inline-block;
+    vertical-align: top;
+    width: 20px;
+    margin: 40px 0px 10px 20px;
+    background: blue;
+}
+div#editorial div.scrollzone div.scrollbar {
+    width: 10px;
+    margin: 5px auto;
+    background: red;
+}
+div#editorial div.scrollzone div.scrollbar div.scroller {
+    width: 10px;
+    background-color: green;
 }
