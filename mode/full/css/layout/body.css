@@ -11,12 +11,17 @@ div#editorial {
 }
 div#editorial div.content {
     display: inline-block;
+    width: 100%;
 }
-div#editorial div.content.small {
+div#editorial div.content.navigable {
+    margin-left: 160px;
+    width: 760px;
+}
+div#editorial div.content.scrollable {
     width: 880px;
 }
-div#editorial div.content.large {
-    width: 100%;
+div#editorial div.content.navigable.scrollable {
+    width: 720px;
 }
 
 /* Main scrollbar */
@@ -35,4 +40,48 @@ div#editorial div.scrollzone div.scrollbar {
 div#editorial div.scrollzone div.scrollbar div.scroller {
     width: 10px;
     background-color: green;
+}
+
+/* Lateral navigation */
+div#latnav {
+    position: absolute;
+    z-index: 6;
+    top: 0px;
+    width: 140px;
+    background: blue;
+}
+div#latnav div.tools {
+    margin: 10px 0px;
+}
+div#latnav div.tools div {
+    display: inline-block;
+    width: 70px;
+    height: 40px;
+}
+div#latnav div.tools div.left {
+    background-color: pink;
+    margin-right: 0px;
+}
+div#latnav div.tools div.right {
+    background-color: greenyellow;
+    
+}
+div#latnav div.plan {
+    background-color: #c20000;
+}
+div#latnav div.links {
+    margin: 10px 0px;
+}
+div#latnav div.links div {
+    display: inline-block;
+    width: 70px;
+    height: 40px;
+}
+div#latnav div.links div.left {
+    background-color: pink;
+    margin-right: 0px;
+}
+div#latnav div.links div.right {
+    background-color: greenyellow;
+    
 }

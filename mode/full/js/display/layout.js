@@ -5,11 +5,13 @@
 /* Body auto-resize
  * --------------------
  *  s.header        > div#header
+ *  s.banner        > div#banner
  *  s.body          > div#body
  *  s.bigsl         > div#bigslider
  *  s.bigslslides   > div#bigslider div.slide
  *  s.bigslsslide   > div#bigslider div.slide.selected
  *  s.editorial     > div#editorial
+ *  s.latnav        > div#editorial div.latnav
  *  s.content       > div#editorial div.content
  *  s.scrollzone    > div#editorial div.content div.scrollzone
  *  s.scrollbar     > div#editorial div.content div.scrollzone div.scrollbar
@@ -18,11 +20,13 @@
 function refreshBodySelector () {
     var s = {
         header:         $("div#header"),
+        banner:         $("div#banner"),
         body:           $("div#body"),
         bigsl:          $("div#bigslider"),
         bigslslides:    $("div#bigslider div.slide"),
         bigslsslide:    $("div#bigslider div.slide.selected"),
         editorial:      $("div#editorial"),
+        latnav:         $("div#latnav"),
         content:        $("div#editorial div.content"),
         scrollzone:     $("div#editorial div.scrollzone"),
         scrollbar:      $("div#editorial div.scrollzone div.scrollbar"),
@@ -73,6 +77,7 @@ function refreshHeader(s) {
  *  s.bigslslides   > div#bigslider div.slide
  *  s.bigslsslide   > div#bigslider div.slide.selected
  *  s.editorial     > div#editorial
+ *  s.latnav        > div#editorial div.latnav
  *  s.content       > div#editorial div.content
  *  s.scrollzone    > div#editorial div.scrollzone
  *  s.scrollbar     > div#editorial div.scrollzone div.scrollbar
@@ -88,6 +93,7 @@ function refreshAllSelector () {
         bigslslides:    $("div#bigslider div.slide"),
         bigslsslide:    $("div#bigslider div.slide.selected"),
         editorial:      $("div#editorial"),
+        latnav:         $("div#latnav"),
         content:        $("div#editorial div.content"),
         scrollzone:     $("div#editorial div.scrollzone"),
         scrollbar:      $("div#editorial div.scrollzone div.scrollbar"),

@@ -87,6 +87,7 @@ function eventSwitchPage() {
                 complete: function() {
                     bindLinksEvents();
                     bindSliderEvents();
+                    bindEditorialEvents();
                 }
             });
         }
@@ -117,7 +118,7 @@ function bindLinksEvents() {
     $("a").unbind();
 
     /* Page change links */
-    $("a[href]:not(.tnl1, .sn)").click(function(event) {
+    $("a[href]:not(.tnl1, .sn, .print, .fs)").click(function(event) {
         event.preventDefault();
         eventClassicLink(this);
     });

@@ -2,10 +2,10 @@
 <!-- params.xml : parameters file -->
 <params>
     <component id="page">
-        <var name="page_topanoramic_speed">1000</var>
-        <var name="page_topanoramic_easing">easeOutExpo</var>
-        <var name="page_tonormal_speed">1000</var>
-        <var name="page_tonormal_easing">easeOutExpo</var>
+        <var name="page_topanoramic_speed">800</var>
+        <var name="page_topanoramic_easing">easeInOutQuad</var>
+        <var name="page_tonormal_speed">800</var>
+        <var name="page_tonormal_easing">easeInOutQuad</var>
     </component>
     <component id="header">
         <var name="banner_switch_speed">1000</var>
@@ -32,9 +32,10 @@
         <var name="bigslider_autochange_easing">linear</var>
         <var name="bigslider_autochange_direction">true</var>
         <var name="editorial_scroller_speed">250</var>
-        <var name="editorial_scroller_easing">swing</var>
-        <var name="editorial_scroller_distance">200</var>
+        <var name="editorial_scroller_easing">easeOutQuad</var>
+        <var name="editorial_scroller_distance">120</var>
         <var name="editorial_scroller_multiplier">1.5</var>
+        <var name="editorial_scroller_maxmulti">3</var>
     </component>
     <component id="options">
         <var name="devmode">true</var>

@@ -2,6 +2,11 @@
  * ------------
  * Executes and memorize a list of tests relative to the CSS constants. */
 
+/* Global vars */
+var gbl = {
+    msocc: 0
+}
+
 /* Constants definition */
 var constants;
 $(document).ready(function() {

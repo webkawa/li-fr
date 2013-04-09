@@ -97,14 +97,11 @@ function buildEditorial() {
         /* Content zone */
         var buff = $("div#editorial").children().clone();
         $("div#editorial").empty();
-        $("div#editorial").append('<div class="content"></div>');
+        $("div#editorial").append('<div class="content" style="margin-top: 0px"></div>');
         $("div#editorial div.content").append(buff);
 
         /* Scroller */
         if (ppget("scroll") === "classic") {
-            /* Content size */
-            $("div#editorial div.content").addClass("small");
-
             /* Scroll tools */
             buff = '<div class="scrollzone">' +
                         '<div class="scrollbar">' +
@@ -118,9 +115,42 @@ function buildEditorial() {
                 containment: "div#editorial div.scrollzone div.scrollbar",
                 axis: "y"
             });
-        } else {
-            /* Content zone */
-            $("div#editorial div.content").addClass("large");
+        }
+        
+        /* Lateral navigation */
+        if (ppget("nav") === "classic") {
+            /* Base */
+            buff =  '<div id="latnav">' +
+                        '<div class="tools">' +
+                            '<div class="left">' +
+                                '<a class="print" href="print">IMP</a>' +
+                            '</div>' +
+                            '<div class="right">' +
+                                '<a class="fs" href="small">--</a>' +
+                                '<a class="fs" href="big">++</a>' +
+                            '</div>' +
+                        '</div>' +
+                        '<div class="plan">' +
+                            '<ul></ul>' +
+                        '</div>' +
+                        '<div class="links">' +
+                            '<div class="left">' +
+                                '<a class="ln" href="' +
+                                '">BACK</a>' +
+                            '</div>' +
+                            '<div class="right">' +
+                                '<a class="ln" href="next">NEXT</a>' +
+                            '</div>' +
+                        '</div>' +
+                    '</div>';
+            $("div#editorial").append(buff);
+            $("div#editorial div.content").addClass("navigable");
+            
+            /* Links */
+            $("div#editorial div.content").children("h1").each(function() {
+                buff = '<li>' + $(this).text() + '</li>';
+                $("div#latnav div.plan ul").append(buff);
+            });
         }
     }
 }
