@@ -18,4 +18,5 @@ function bindAllEvents() {
     bindLinksEvents();
     bindSliderEvents();
     bindEditorialEvents();
+    bindLateralNavigationEvents();
 }

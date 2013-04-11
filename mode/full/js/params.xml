@@ -21,6 +21,14 @@
         <var name="subnav_switchin_speed">120</var>
         <var name="subnav_switchin_easing">linear</var>
     </component>
+    <component id="latnav">
+        <var name="sublist_open_speed">1000</var>
+        <var name="sublist_open_easing">easeOutExpo</var>
+        <var name="sublist_close_speed">600</var>
+        <var name="sublist_close_easing">easeOutExpo</var>
+        <var name="sublist_scroll_speed">800</var>
+        <var name="sublist_scroll_easing">easeOutExpo</var>
+    </component>
     <component id="body">
         <var name="body_switchout_speed">400</var>
         <var name="body_switchout_easing">swing</var>

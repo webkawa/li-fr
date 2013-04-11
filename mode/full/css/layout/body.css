@@ -66,9 +66,40 @@ div#latnav div.tools div.right {
     background-color: greenyellow;
     
 }
+
 div#latnav div.plan {
     background-color: #c20000;
+    font-size: 90%;
 }
+div#latnav div.plan > ul {
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+div#latnav div.plan > ul > li {
+    padding: 4px 0px 0px 0px;
+    margin: 0px 0px;
+} 
+div#latnav div.plan > ul > li:hover {
+    background: #ff0000;
+}
+div#latnav div.plan > ul > li > a {
+    
+}
+div#latnav div.plan > ul > li > ul {
+    overflow: hidden;
+    margin: 4px 0px 0px 0px;
+    padding: 0px;
+    background: darkgoldenrod;
+}
+div#latnav div.plan > ul > li > ul.close {
+    display: none;
+    height: 0px;
+}
+div#latnav div.plan > ul > li > ul > li:hover {
+    background: navajowhite;
+}
+
 div#latnav div.links {
     margin: 10px 0px;
 }

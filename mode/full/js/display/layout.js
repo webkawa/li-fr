@@ -10,8 +10,10 @@
  *  s.bigsl         > div#bigslider
  *  s.bigslslides   > div#bigslider div.slide
  *  s.bigslsslide   > div#bigslider div.slide.selected
+ *  s.latnav        > div#latnav
+ *  s.latnavplan    > div#latnav div.plan
+ *  s.latnavsublist > div#latnav div.plan ul li ul
  *  s.editorial     > div#editorial
- *  s.latnav        > div#editorial div.latnav
  *  s.content       > div#editorial div.content
  *  s.scrollzone    > div#editorial div.content div.scrollzone
  *  s.scrollbar     > div#editorial div.content div.scrollzone div.scrollbar
@@ -25,8 +27,10 @@ function refreshBodySelector () {
         bigsl:          $("div#bigslider"),
         bigslslides:    $("div#bigslider div.slide"),
         bigslsslide:    $("div#bigslider div.slide.selected"),
-        editorial:      $("div#editorial"),
         latnav:         $("div#latnav"),
+        latnavplan:     $("div#latnav div.plan"),
+        latnavsublist:  $("div#latnav div.plan ul li ul"),
+        editorial:      $("div#editorial"),
         content:        $("div#editorial div.content"),
         scrollzone:     $("div#editorial div.scrollzone"),
         scrollbar:      $("div#editorial div.scrollzone div.scrollbar"),
@@ -46,6 +50,7 @@ function refreshBody(s) {
     /* Dependances */
     refreshSliders(s);
     refreshEditorial(s);
+    refreshLateralNavigation(s);
 }
 
 /* Header auto-resize
@@ -76,8 +81,10 @@ function refreshHeader(s) {
  *  s.bigsl         > div#bigslider
  *  s.bigslslides   > div#bigslider div.slide
  *  s.bigslsslide   > div#bigslider div.slide.selected
+ *  s.latnav        > div#latnav
+ *  s.latnavplan    > div#latnav div.plan
+ *  s.latnavsublist > div#latnav div.plan ul li ul
  *  s.editorial     > div#editorial
- *  s.latnav        > div#editorial div.latnav
  *  s.content       > div#editorial div.content
  *  s.scrollzone    > div#editorial div.scrollzone
  *  s.scrollbar     > div#editorial div.scrollzone div.scrollbar
@@ -92,8 +99,10 @@ function refreshAllSelector () {
         bigsl:          $("div#bigslider"),
         bigslslides:    $("div#bigslider div.slide"),
         bigslsslide:    $("div#bigslider div.slide.selected"),
-        editorial:      $("div#editorial"),
         latnav:         $("div#latnav"),
+        latnavplan:     $("div#latnav div.plan"),
+        latnavsublist:  $("div#latnav div.plan ul li ul"),
+        editorial:      $("div#editorial"),
         content:        $("div#editorial div.content"),
         scrollzone:     $("div#editorial div.scrollzone"),
         scrollbar:      $("div#editorial div.scrollzone div.scrollbar"),

@@ -2,6 +2,15 @@
  * ---------
  * Body specific display functions. */
 
+/* Lateral navigation
+ * ------------------
+ *  s.latnav        > div#latnav
+ *  s.latnavplan    > div#latnav div.plan
+ *  s.latnavsublist > div#latnav div.plan ul li ul */
+function refreshLateralNavigation(s) {
+    
+}
+
 /* Editorial content scroll management
  * -----------------------------------
  *  s.editorial     > div#editorial

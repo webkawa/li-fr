@@ -3,6 +3,9 @@
  *  Editorial-related events. */
 
 /* Mouse scroll */
+function eventTitleScroll(target) {
+    console.log(target);
+}
 function eventMouseScroll(delta) {
     var gap = cfget("body", "editorial_scroller_distance");
     var multi = Math.pow(cfgetfloat("body", "editorial_scroller_multiplier"), gbl.msocc);

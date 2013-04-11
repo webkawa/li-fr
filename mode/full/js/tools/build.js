@@ -85,6 +85,12 @@ function buildSubNavigation(id) {
     buildSubNavigationColumn($(subnavct).children("div.column.right"), $(data).find('column[position="right"]'));
 }
 
+/* Lateral navigation sublists switch */
+function switchLateralNavigationSL(target, mode) {
+    $(target).removeClass("close closing open opening");
+    $(target).addClass(mode);
+}
+
 /* Editorial build */
 function switchStartEditorialScroll() {
     $("div#editorial div.scrollzone div.scrollbar").addClass("scrolling");
@@ -118,6 +124,13 @@ function buildEditorial() {
         }
         
         /* Lateral navigation */
+        var prebuff =   $(smap).find("#" + nav.idp).prev("page, index").length > 0 ?
+                            $(smap).find("#" + nav.idp).prev("page, index").attr("id") :
+                            $(smap).find("#" + nav.idp).parent().attr("id");
+        var nextbuff =  $(smap).find("#" + nav.idp).next("page, index").length > 0 ?
+                            $(smap).find("#" + nav.idp).next("page, index").attr("id") :
+                            $(smap).find("#" + nav.idp).parent().attr("id");
+                    
         if (ppget("nav") === "classic") {
             /* Base */
             buff =  '<div id="latnav">' +
@@ -135,21 +148,46 @@ function buildEditorial() {
                         '</div>' +
                         '<div class="links">' +
                             '<div class="left">' +
-                                '<a class="ln" href="' +
-                                '">BACK</a>' +
+                                '<a href="' + prebuff + '">BACK</a>' +
                             '</div>' +
                             '<div class="right">' +
-                                '<a class="ln" href="next">NEXT</a>' +
+                                '<a href="' + nextbuff + '">NEXT</a>' +
                             '</div>' +
                         '</div>' +
                     '</div>';
+            
             $("div#editorial").append(buff);
             $("div#editorial div.content").addClass("navigable");
             
-            /* Links */
-            $("div#editorial div.content").children("h1").each(function() {
-                buff = '<li>' + $(this).text() + '</li>';
-                $("div#latnav div.plan ul").append(buff);
+            /* Lateral links */
+            var idx = 0;
+            $("div#editorial").find("h1").each(function (index, valueh1) {
+                $(valueh1).attr("id", "ln" + idx);
+                buff =  '<li>' +
+                            '<a class="ln" href="ln' + idx + '">' +
+                                $(valueh1).text() +
+                            '</a>' +
+                        '</li>';
+                $("div#latnav div.plan > ul").append(buff);
+                idx++;
+
+                if ($(valueh1).nextUntil("h1", "h2").length > 0) {
+                    $("div#latnav div.plan > ul > li:last").append('<ul></ul>');
+                    
+                    $(valueh1).nextUntil("h1", "h2").each(function(index, valueh2) {
+                        $(valueh2).attr("id", "ln" + idx);
+                        buff =  '<li>' +
+                                    '<a class="ln" href="ln' + idx + '">' +
+                                        $(valueh2).text() +
+                                    '</a>' +
+                                '</li>';
+                        $("div#latnav div.plan > ul > li:last > ul").append(buff);
+                        idx++;
+                    });
+                    
+                    $("div#latnav div.plan > ul > li:last > ul").css("max-height", $("div#latnav div.plan > ul > li:last > ul").height());
+                    $("div#latnav div.plan > ul > li:last > ul").addClass("close");
+                }
             });
         }
     }

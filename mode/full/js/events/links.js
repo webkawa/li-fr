@@ -88,6 +88,7 @@ function eventSwitchPage() {
                     bindLinksEvents();
                     bindSliderEvents();
                     bindEditorialEvents();
+                    bindLateralNavigationEvents();
                 }
             });
         }
@@ -118,7 +119,7 @@ function bindLinksEvents() {
     $("a").unbind();
 
     /* Page change links */
-    $("a[href]:not(.tnl1, .sn, .print, .fs)").click(function(event) {
+    $("a[href]:not(.tnl1, .sn, .ln, .print, .fs)").click(function(event) {
         event.preventDefault();
         eventClassicLink(this);
     });
@@ -126,12 +127,21 @@ function bindLinksEvents() {
     /* Rubric change links */
     $("a.tnl1[href]").click(function(event) {
         event.preventDefault();
-        eventRubricLink(this);
+    });
+    $("a.tnl1[href]").parent().click(function() {
+        eventRubricLink($(this).children("a"));
     });
 
     /* Slider navigation links */
     $("a.sn[href]").click(function(event) {
         event.preventDefault();
         eventSwitchSlide(this);
+    });
+    
+    /* Lateral navigation links */
+    $("a.ln[href]").click(function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        eventClickLateralNavigation(this);
     });
 }
