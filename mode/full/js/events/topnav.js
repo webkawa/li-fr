@@ -101,6 +101,12 @@ function bindTopNavEvents() {
         eventSwitchSubNav(this);
     });
     
+    /* Sub navigation click */
+    buff = "div#topnav div.baseline div.nav ul.links li";
+    $(buff).click(function() {
+        $(this).children("a").trigger("click");
+    });
+    
     /* Dependances */
     bindLinksEvents();
 }

@@ -4,95 +4,99 @@
 
 /* Page switch */
 function eventSwitchPage() {
-    /* Closing sub navigation */
-    var buff = "div#topnav.open div.baseline," +
-            "div#topnav.opening div.baseline";
-    $(buff).trigger("mouseleave");
+    if (!$("div#body").hasClass("switching")) {
+        /* Closing sub navigation */
+        var buff =  "div#topnav.open div.baseline," +
+                    "div#topnav.opening div.baseline";
+        $(buff).trigger("mouseleave");
 
-    /* Switching page disposition */
-    var mode = ppget("mode");
-    if (mode !== $("body").attr("class")) {
-        /* Getting move vars */
-        var dh, ds, de;
-        if (mode === "normal") {
-            dh = constants.headerNormalH;
-            ds = cfgetint("page", "page_tonormal_speed");
-            de = cfget("page", "page_tonormal_easing");
-        } else {
-            dh = constants.headerPanoramicH;
-            ds = cfgetint("page", "page_topanoramic_speed");
-            de = cfget("page", "page_topanoramic_easing");
+        /* Switching page disposition */
+        var mode = ppget("mode");
+        if (mode !== $("body").attr("class")) {
+            /* Getting move vars */
+            var dh, ds, de;
+            if (mode === "normal") {
+                dh = constants.headerNormalH;
+                ds = cfgetint("page", "page_tonormal_speed");
+                de = cfget("page", "page_tonormal_easing");
+            } else {
+                dh = constants.headerPanoramicH;
+                ds = cfgetint("page", "page_topanoramic_speed");
+                de = cfget("page", "page_topanoramic_easing");
+            }
+
+            /* Launching */
+            var slr = refreshHeaderSelector();
+            $("div#header").addClass("switching");
+            $("div#header").animate({
+                height: dh
+            }, {
+                duration: ds,
+                easing: de,
+                progress: function() {
+                    refreshHeader(slr);
+                },
+                complete: function() {
+                    $("div#header").removeAttr("style");
+                    $("div#header").removeClass("switching");
+                    switchPageDisposition(mode);
+                }
+            });
         }
 
-        /* Launching */
-        var slr = refreshHeaderSelector();
-        $("div#header").addClass("switching");
-        $("div#header").animate({
-            height: dh
+        /* Switching banner */
+        if (getskinfor(nav.pre[nav.pre.length - 1]) !== getskin()) {
+            switchStartBanner();
+            refreshHeader(refreshHeaderSelector());
+            var url = 
+                $("div#banner div.down").css("background-image")
+                    .replace('url(', '')
+                    .replace(')', '')
+                    .replace(/"/g, '');
+            $('<img/>').attr("src", url).load(function() {
+                $("div#banner div.up").animate({
+                    opacity: 0
+                }, {
+                    duration: cfgetint("header", "banner_switch_speed"),
+                    easing: cfget("header", "banner_switch_easing"),
+                    complete: function() {
+                        switchEndBanner();
+                    }
+                });
+            });
+        }
+
+        /* Switching body content */
+        switchBody();
+        $("div#body").animate({
+            opacity: 0
         }, {
-            duration: ds,
-            easing: de,
-            progress: function() {
-                refreshHeader(slr);
-            },
+            duration: cfgetint("body", "body_switchout_speed"),
+            easing: cfget("body", "body_switchout_easing"),
             complete: function() {
-                $("div#header").removeAttr("style");
-                $("div#header").removeClass("switching");
-                switchPageDisposition(mode);
+                buildBody();
+                buildSkins();
+
+                var slr = refreshBodySelector();
+                $("div#body").animate({
+                    opacity: 1
+                }, {
+                    duration: cfgetint("body", "body_switchin_speed"),
+                    easing: cfget("body", "body_switchin_easing"),
+                    progress: function() {
+                        refreshBody(slr);
+                    },
+                    complete: function() {
+                        switchBody();
+                        bindLinksEvents();
+                        bindSliderEvents();
+                        bindEditorialEvents();
+                        bindLateralNavigationEvents();
+                    }
+                });
             }
         });
     }
-
-    /* Switching banner */
-    if (getskinfor(nav.pre[nav.pre.length - 1]) !== getskin()) {
-        switchStartBanner();
-        refreshHeader(refreshHeaderSelector());
-        var url = 
-            $("div#banner div.down").css("background-image")
-                .replace('url(', '')
-                .replace(')', '')
-                .replace(/"/g, '');
-        $('<img/>').attr("src", url).load(function() {
-            $("div#banner div.up").animate({
-                opacity: 0
-            }, {
-                duration: cfgetint("header", "banner_switch_speed"),
-                easing: cfget("header", "banner_switch_easing"),
-                complete: function() {
-                    switchEndBanner();
-                }
-            });
-        });
-    }
-
-    /* Switching body content */
-    $("div#body").animate({
-        opacity: 0
-    }, {
-        duration: cfgetint("body", "body_switchout_speed"),
-        easing: cfget("body", "body_switchout_easing"),
-        complete: function() {
-            buildBody();
-            buildSkins();
-            
-            var slr = refreshBodySelector();
-            $("div#body").animate({
-                opacity: 1
-            }, {
-                duration: cfgetint("body", "body_switchin_speed"),
-                easing: cfget("body", "body_switchin_easing"),
-                progress: function() {
-                    refreshBody(slr);
-                },
-                complete: function() {
-                    bindLinksEvents();
-                    bindSliderEvents();
-                    bindEditorialEvents();
-                    bindLateralNavigationEvents();
-                }
-            });
-        }
-    });
 }
 
 /* General links */
@@ -126,10 +130,9 @@ function bindLinksEvents() {
 
     /* Rubric change links */
     $("a.tnl1[href]").click(function(event) {
+        event.stopPropagation();
         event.preventDefault();
-    });
-    $("a.tnl1[href]").parent().click(function() {
-        eventRubricLink($(this).children("a"));
+        eventRubricLink($(this));
     });
 
     /* Slider navigation links */

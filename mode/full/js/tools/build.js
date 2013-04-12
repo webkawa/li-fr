@@ -295,6 +295,10 @@ function buildSkins() {
 }
 
 /* Page content build */
+function switchBody() {
+    if($("div#body").hasClass("switching"))                 $("div#body").removeClass("switching");
+    else                                                    $("div#body").addClass("switching");
+}
 function buildBody() {
     /* Immediate build */
     $("div#body").empty();
